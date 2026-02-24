@@ -1,0 +1,37 @@
+/* Quick admin fixes to improve layout until Tailwind is built */
+:root{
+  --admin-bg:#0B1C2D;
+  --admin-accent:#C6A75E;
+  --admin-panel:#0f2430;
+}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+/* Layout */
+.admin-wrapper{display:flex;min-height:100vh}
+.admin-sidebar{width:260px;background:var(--admin-bg);color:#fff;padding:1rem;box-sizing:border-box}
+.admin-content{flex:1;background:#f8fafc;padding:1.25rem}
+.admin-sidebar a{color:#fff;text-decoration:none;display:block;padding:.5rem .75rem;border-radius:6px}
+.admin-sidebar a:hover{background:rgba(255,255,255,0.04)}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.card{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+/* Tables */
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:.5rem .75rem;border-bottom:1px solid #e6eef2;text-align:left}
+.table th{background:#f1f5f9}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .75rem;border-radius:6px;border:0;cursor:pointer}
+.btn-primary{background:var(--admin-accent);color:#0B1C2D}
+.btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.05)}
+/* Responsive */
+@media (max-width:900px){
+  .admin-sidebar{display:none}
+  .admin-wrapper{flex-direction:column}
+}
+/* Small utilities */
+.text-muted{color:#6b7280}
+.mb-2{margin-bottom:.5rem}
+.mb-4{margin-bottom:1rem}
+.mt-4{margin-top:1rem}
+.p-2{padding:.5rem}
+.p-4{padding:1rem}
+
+/* End admin fixes */

@@ -1,0 +1,45 @@
+.back-button {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(198, 164, 92, 0.3);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background: #C6A45C;
+    border-color: #C6A45C;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(198, 164, 92, 0.3);
+}
+
+.back-button:hover svg {
+    stroke: white;
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+    stroke: #0D1B2A;
+    stroke-width: 2;
+    transition: stroke 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        top: 80px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,308 @@
+/* ========================================
+   RESPONSIVE STYLES FOR ALL PAGES
+   Mobile-First Approach
+   ======================================== */
+
+/* Tablet & Small Desktop (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .nav-container { gap: 4rem; padding: 1.5rem 2rem; }
+    .nav-links { gap: 35px; }
+    .hero { padding: 4rem 2rem; }
+    .heritage-grid, .product-showcase-grid, .join-grid, .origin-grid, .vision-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-hero .hero-grid { gap: 4rem; }
+    .standfor-grid { grid-template-columns: repeat(2, 1fr); }
+    .account-container { grid-template-columns: 280px 1fr; gap: 1.5rem; }
+}
+
+/* Tablet (max-width: 968px) */
+@media (max-width: 968px) {
+    /* Navigation */
+    .nav-container { padding: 1rem 1.5rem; gap: 2rem; grid-template-columns: 1fr auto 1fr; }
+    .nav-links { gap: 20px; font-size: 10px; }
+    .nav-logo { width: 50px; height: 50px; }
+    .nav-center span { font-size: 1.2rem; }
+    .nav-icon svg { width: 18px; height: 18px; }
+    
+    /* Hero */
+    .hero { padding: 3rem 1.5rem; height: 500px; margin-top: 70px; }
+    .hero h1 { font-size: 38px; }
+    .hero h1 span { font-size: 48px !important; }
+    .ornamental-divider img { width: 280px !important; }
+    .hero p { font-size: 1rem; }
+    .banner-slide img { height: 500px; }
+    
+    /* Sections */
+    .heritage, .philosophy-section, .ritual-section, .purity-section, .product-carousel-section, .product-showcase-section { padding: 4rem 1.5rem; }
+    .heritage-text h2, .philosophy-section h2, .ritual-section h2, .purity-section h2, .product-carousel-section h2 { font-size: 28px; margin-bottom: 40px; }
+    .pillars, .ritual-steps-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .purity-grid { grid-template-columns: 1fr; }
+    
+    /* Product Showcase */
+    .product-text h2 { font-size: 2.5rem; }
+    .product-tagline { font-size: 1.2rem; }
+    .showcase-product-image { max-width: 350px; }
+    
+    /* Join Section */
+    .join-section { padding: 5rem 1.5rem; }
+    .product-frame { padding: 2rem; transform: scale(1); }
+    .join-content h2 { font-size: 2rem; }
+    .join-content h2::after { font-size: 2.5rem; }
+    
+    /* Footer */
+    .footer-columns { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .footer-social { justify-content: center; }
+    
+    /* Product Page */
+    .product-container { padding: 0 1.5rem; }
+    .product-hero { padding: 5rem 1.5rem; }
+    .main-product-image { padding: 2rem; }
+    .main-product-image img { height: 400px; }
+    .product-title { font-size: 2.2rem; }
+    .product-highlights, .trust-signals { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+    .return-policy { flex-direction: column; gap: 1rem; }
+    
+    /* About Page */
+    .about-hero { padding: 5rem 1.5rem; }
+    .about-hero .hero-grid, .origin-grid, .standfor-grid, .vision-grid { grid-template-columns: 1fr; text-align: center; }
+    .about-hero .product-shot { width: 70%; margin: 0 auto; padding: 1.5rem; }
+    .about-hero .hero-left h1 { font-size: 34px; }
+    .standfor-item { border-left: none; border-top: 1px solid rgba(13,27,42,0.06); }
+    .standfor-item:first-child { border-top: none; }
+    .origin-section, .standfor-section, .vision-section { padding: 4rem 1.5rem; }
+    
+    /* Profile/Account */
+    .account-container { grid-template-columns: 1fr; }
+    .account-sidebar { padding: 2rem 0; }
+    
+    /* Carousel */
+    .carousel-item { flex: 0 0 250px; }
+    .carousel-track { justify-content: flex-start; }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Navigation - Mobile Menu */
+    .nav-container { grid-template-columns: 1fr; gap: 0; padding: 1rem; justify-content: center; }
+    .nav-left, .nav-right { display: none; }
+    .nav-center { position: static; transform: none; }
+    .nav-logo { width: 45px; height: 45px; }
+    .nav-center span { font-size: 1.1rem; }
+    
+    /* Hero */
+    .hero { padding: 2.5rem 1rem; height: 450px; margin-top: 60px; }
+    .hero h1 { font-size: 28px; }
+    .hero h1 span { font-size: 36px !important; }
+    .ornamental-divider { margin: -50px 0; }
+    .ornamental-divider img { width: 220px !important; }
+    .hero p { font-size: 0.95rem; margin-bottom: 2rem; }
+    .cta-primary { padding: 12px 28px; font-size: 11px; }
+    .banner-slide img { height: 450px; }
+    
+    /* Sections */
+    .heritage, .philosophy-section, .ritual-section, .purity-section, .product-carousel-section, .product-showcase-section { padding: 3rem 1rem; }
+    .heritage-text h2, .philosophy-section h2, .ritual-section h2, .purity-section h2, .product-carousel-section h2 { font-size: 24px; margin-bottom: 30px; }
+    .heritage-text p, .pillar p, .ritual-step p { font-size: 14px; }
+    .pillar h3, .ritual-step h3 { font-size: 18px; }
+    
+    /* Product Showcase */
+    .product-text h2 { font-size: 2rem; }
+    .product-tagline { font-size: 1.1rem; }
+    .product-benefits li { font-size: 1rem; }
+    .showcase-product-image { max-width: 280px; }
+    
+    /* Join Section */
+    .join-section { padding: 4rem 1rem; }
+    .join-content h2 { font-size: 1.6rem; }
+    .join-content h2::after { font-size: 2rem; }
+    .join-form input { padding: 14px 18px; font-size: 13px; }
+    .btn-gold { padding: 14px 36px; font-size: 12px; }
+    
+    /* Footer */
+    footer { padding: 3rem 1rem 2rem; }
+    .footer-columns { gap: 2rem; }
+    .footer-column h3 { font-size: 1.1rem; }
+    .footer-links a, .footer-contact li { font-size: 0.85rem; }
+    
+    /* Product Page */
+    .product-hero { padding: 4rem 1rem; }
+    .main-product-image { padding: 1.5rem; }
+    .main-product-image img { height: 320px; }
+    .product-title { font-size: 1.8rem; }
+    .product-subtitle { font-size: 1rem; }
+    .product-price, .current-price { font-size: 2rem; }
+    .add-to-ritual-btn, .add-to-cart-btn-full { padding: 1rem 2.5rem; font-size: 0.8rem; }
+    .thumbnail { width: 70px; height: 70px; }
+    .thumbnail-gallery { flex-wrap: wrap; }
+    
+    /* Benefits */
+    .benefits-section { padding: 3rem 1rem; }
+    .benefits-section h2 { font-size: 1.8rem; }
+    .benefit-item { gap: 1.2rem; }
+    .benefit-item p { font-size: 0.95rem; }
+    
+    /* About Page */
+    .about-hero { padding: 4rem 1rem; }
+    .about-hero .hero-left h1 { font-size: 28px; }
+    .about-hero .hero-left p { font-size: 0.95rem; }
+    .about-hero .product-shot { width: 85%; padding: 1rem; }
+    .origin-section, .standfor-section, .vision-section, .quality-section { padding: 3rem 1rem; }
+    .origin-section h2, .standfor-section h2, .vision-content h2, .quality-section h3 { font-size: 22px; }
+    .standfor-item { padding: 2rem 1rem; }
+    
+    /* Pages */
+    .page-hero { padding: 5rem 1rem 3rem; }
+    .page-hero h1 { font-size: 2.2rem; }
+    .subtitle { font-size: 1rem; }
+    .manifesto { padding: 4rem 1rem; }
+    .manifesto h1 { font-size: 2.2rem; }
+    .manifesto-text p { font-size: 0.95rem; }
+    .manifesto-text .large { font-size: 1.2rem; }
+    .principle h3 { font-size: 1.5rem; }
+    .principle p { font-size: 0.95rem; }
+    
+    /* Auth */
+    .auth-section { padding: 3rem 1rem; }
+    .auth-box, .profile-box { padding: 2rem 1.5rem; }
+    .auth-box h1, .profile-box h1 { font-size: 1.8rem; }
+    .auth-subtitle { font-size: 0.9rem; }
+    .profile-avatar { width: 100px; height: 100px; }
+    
+    /* Reviews */
+    .reviews-boxes { grid-template-columns: 1fr; }
+    .reviews-box-left { margin-bottom: 1rem; }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Navigation */
+    .nav-logo { width: 38px; height: 38px; }
+    .nav-center span { font-size: 0.95rem; letter-spacing: 2px; }
+    .nav-icon svg { width: 16px; height: 16px; }
+    
+    /* Hero */
+    .hero { padding: 2rem 0.8rem; height: 400px; }
+    .hero h1 { font-size: 24px; }
+    .hero h1 span { font-size: 30px !important; }
+    .ornamental-divider { margin: -40px 0; }
+    .ornamental-divider img { width: 180px !important; }
+    .hero p { font-size: 0.9rem; }
+    .banner-slide img { height: 400px; }
+    
+    /* Sections */
+    .heritage, .philosophy-section, .ritual-section, .purity-section, .product-carousel-section, .product-showcase-section { padding: 2.5rem 0.8rem; }
+    .heritage-text h2, .philosophy-section h2, .ritual-section h2, .purity-section h2, .product-carousel-section h2 { font-size: 20px; }
+    .pillar h3, .ritual-step h3 { font-size: 16px; }
+    .pillar p, .ritual-step p, .heritage-text p { font-size: 13px; }
+    
+    /* Product Showcase */
+    .product-text h2 { font-size: 1.6rem; }
+    .product-tagline { font-size: 1rem; }
+    .product-benefits li { font-size: 0.9rem; padding-left: 1.5rem; }
+    .showcase-product-image { max-width: 240px; }
+    
+    /* Join Section */
+    .join-section { padding: 3rem 0.8rem; }
+    .join-content h2 { font-size: 1.4rem; }
+    .join-content h2::after { font-size: 1.7rem; }
+    .join-content p { font-size: 14px; }
+    .join-form input { padding: 12px 16px; font-size: 12px; }
+    .btn-gold { padding: 12px 30px; font-size: 11px; }
+    
+    /* Footer */
+    footer { padding: 2.5rem 0.8rem 1.5rem; }
+    .footer-logo img { width: 55px; height: 55px; }
+    .footer-tagline { font-size: 0.95rem; }
+    .footer-column h3 { font-size: 1rem; }
+    .footer-links a, .footer-contact li { font-size: 0.8rem; }
+    .footer-bottom p { font-size: 0.75rem; }
+    
+    /* Product Page */
+    .product-hero { padding: 3rem 0.8rem; }
+    .main-product-image { padding: 1rem; }
+    .main-product-image img { height: 280px; }
+    .product-title { font-size: 1.5rem; }
+    .product-subtitle { font-size: 0.95rem; }
+    .product-description { font-size: 0.9rem; }
+    .product-price, .current-price { font-size: 1.8rem; }
+    .add-to-ritual-btn, .add-to-cart-btn-full { padding: 0.9rem 2rem; font-size: 0.75rem; }
+    .thumbnail { width: 60px; height: 60px; }
+    .quantity-selector input { width: 50px; }
+    .qty-btn { width: 35px; height: 35px; }
+    
+    /* Benefits */
+    .benefits-section { padding: 2.5rem 0.8rem; }
+    .benefits-section h2 { font-size: 1.5rem; }
+    .benefit-item { gap: 1rem; }
+    .benefit-item p { font-size: 0.85rem; }
+    
+    /* About Page */
+    .about-hero { padding: 3rem 0.8rem; }
+    .about-hero .hero-left h1 { font-size: 24px; }
+    .about-hero .hero-left p { font-size: 0.9rem; }
+    .about-hero .product-shot { width: 100%; padding: 0.8rem; }
+    .origin-section, .standfor-section, .vision-section, .quality-section { padding: 2.5rem 0.8rem; }
+    .origin-section h2, .standfor-section h2, .vision-content h2, .quality-section h3 { font-size: 20px; }
+    .standfor-item { padding: 1.5rem 0.8rem; }
+    .standfor-icon { width: 48px; height: 48px; }
+    
+    /* Pages */
+    .page-hero { padding: 4rem 0.8rem 2rem; }
+    .page-hero h1 { font-size: 1.8rem; }
+    .subtitle { font-size: 0.95rem; }
+    .manifesto { padding: 3rem 0.8rem; }
+    .manifesto h1 { font-size: 1.8rem; }
+    .manifesto-text p { font-size: 0.9rem; }
+    .manifesto-text .large { font-size: 1.1rem; }
+    .principle h3 { font-size: 1.3rem; }
+    .principle p { font-size: 0.9rem; }
+    .container, .container-narrow { padding: 0 0.8rem; }
+    
+    /* Auth */
+    .auth-section { padding: 2.5rem 0.8rem; }
+    .auth-box, .profile-box { padding: 1.5rem 1rem; }
+    .auth-box h1, .profile-box h1 { font-size: 1.5rem; }
+    .auth-subtitle { font-size: 0.85rem; }
+    .profile-avatar { width: 85px; height: 85px; }
+    .logout-btn { padding: 0.7rem 1.8rem; font-size: 0.8rem; }
+    .form-group input { padding: 0.8rem; font-size: 0.9rem; }
+    .auth-btn { padding: 0.9rem; font-size: 0.85rem; }
+    
+    /* Account */
+    .account-main { padding: 2rem 1.5rem; }
+    .content-header h1 { font-size: 2rem; }
+    .info-card { padding: 1.5rem; }
+    
+    /* Modal */
+    .modal-content { padding: 2rem 1.5rem; }
+    .modal-content h2 { font-size: 1.5rem; }
+    .modal-buttons { flex-direction: column; }
+    .btn-continue, .btn-checkout { width: 100%; }
+}
+
+/* Extra Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+    .nav-center span { font-size: 0.85rem; }
+    .hero h1 { font-size: 20px; }
+    .hero h1 span { font-size: 26px !important; }
+    .ornamental-divider img { width: 150px !important; }
+    .product-text h2 { font-size: 1.4rem; }
+    .join-content h2 { font-size: 1.2rem; }
+    .join-content h2::after { font-size: 1.5rem; }
+    .product-title { font-size: 1.3rem; }
+    .benefits-section h2 { font-size: 1.3rem; }
+}
+
+/* Landscape Mobile Fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero { height: auto; min-height: 350px; padding: 2rem 1rem; }
+    .banner-slide img { height: auto; min-height: 350px; }
+    .auth-section { min-height: auto; padding: 2rem 1rem; }
+}
+
+/* Print Styles */
+@media print {
+    nav, footer, .cart-modal, .auth-modal { display: none !important; }
+    .hero { margin-top: 0; }
+    body { background: white; }
+}

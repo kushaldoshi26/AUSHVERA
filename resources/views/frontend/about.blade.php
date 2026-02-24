@@ -1,0 +1,573 @@
+@extends('layouts.app')
+
+@section('title', 'About — AUSHVERA')
+
+@push('styles')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --cream: #F5EFE6;
+        --cream-soft: #FAF7F2;
+        --charcoal: #1C1C1C;
+        --text-muted: #5E5E5E;
+        --gold: #C6A45C;
+        --navy: #0D1B2A;
+    }
+    
+    body {
+        background: var(--cream);
+        font-family: 'Inter', sans-serif;
+        color: var(--charcoal);
+        position: relative;
+    }
+    
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(198,164,92,0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(198,164,92,0.02) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    main {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .about-hero {
+        padding: 0;
+        background: none;
+        position: relative;
+        margin-top: 80px;
+    }
+    
+    .hero-banner {
+        width: 100%;
+        height: 600px;
+        background: url('{{ asset('assets/img/about-banner.png') }}');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .hero-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(245,239,230,0.85) 0%, rgba(245,239,230,0.4) 50%, transparent 70%);
+    }
+    
+    .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: left;
+        max-width: 600px;
+        z-index: 2;
+    }
+    
+    .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(198,164,92,0.08) 0%, transparent 70%);
+        filter: blur(80px);
+        pointer-events: none;
+    }
+    
+    .about-hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 64px;
+        font-weight: 300;
+        color: var(--charcoal);
+        letter-spacing: 1.5px;
+        margin-bottom: 24px;
+        position: relative;
+    }
+    
+    .about-hero .tagline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-bottom: 32px;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-divider {
+        width: 60px;
+        height: 1px;
+        background: var(--gold);
+        margin: 0;
+    }
+    
+    .hero-description {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-top: 32px;
+        max-width: 500px;
+        letter-spacing: 0.3px;
+        font-weight: 300;
+    }
+    
+    .origin-section {
+        padding: 120px 3rem;
+        background: var(--cream-soft);
+    }
+    
+    .origin-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+    
+    .origin-accent {
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        margin-bottom: 24px;
+    }
+    
+    .origin-text h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 40px;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 32px;
+        letter-spacing: 1.5px;
+        line-height: 1.3;
+    }
+    
+    .origin-text p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        letter-spacing: 0.3px;
+        font-weight: 300;
+    }
+    
+    .origin-image {
+        position: relative;
+        padding: 40px;
+        background: linear-gradient(135deg, rgba(198,164,92,0.03), rgba(198,164,92,0.01));
+        border-radius: 4px;
+    }
+    
+    .origin-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 2px;
+        box-shadow: 0 30px 80px rgba(13,27,42,0.12);
+    }
+    
+    .standfor-section {
+        padding: 120px 3rem;
+        background: var(--cream);
+    }
+    
+    .standfor-header {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+    
+    .standfor-header h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 40px;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 24px;
+        letter-spacing: 1.5px;
+    }
+    
+    .standfor-divider {
+        width: 60px;
+        height: 1px;
+        background: var(--gold);
+        margin: 0 auto;
+    }
+    
+    .standfor-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        border-top: 1px solid rgba(198,164,92,0.15);
+        border-bottom: 1px solid rgba(198,164,92,0.15);
+    }
+    
+    .standfor-item {
+        padding: 60px 40px;
+        text-align: center;
+        border-left: 1px solid rgba(198,164,92,0.15);
+        transition: all 0.4s ease;
+    }
+    
+    .standfor-item:first-child {
+        border-left: none;
+    }
+    
+    .standfor-item:hover {
+        background: rgba(198,164,92,0.03);
+    }
+    
+    .standfor-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(198,164,92,0.06), rgba(198,164,92,0.02));
+        border-radius: 50%;
+        transition: all 0.4s ease;
+    }
+    
+    .standfor-item:hover .standfor-icon {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(198,164,92,0.15);
+    }
+    
+    .standfor-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: var(--gold);
+        stroke-width: 1.5;
+        fill: none;
+    }
+    
+    .standfor-item h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: var(--charcoal);
+        margin-bottom: 16px;
+        letter-spacing: 0.5px;
+    }
+    
+    .standfor-item p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        letter-spacing: 0.3px;
+        font-weight: 300;
+    }
+    
+    .multi-section {
+        padding: 120px 3rem;
+        background: var(--cream-soft);
+    }
+    
+    .multi-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        position: relative;
+    }
+    
+    .multi-grid::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--gold);
+        transform: translateX(-50%);
+    }
+    
+    .section-block {
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+    }
+    
+    .section-block h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 32px;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 32px;
+        letter-spacing: 1px;
+    }
+    
+    .section-block h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    .section-block p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--charcoal);
+        margin-bottom: 16px;
+        letter-spacing: 0.3px;
+        font-weight: 300;
+    }
+    
+    .approach-number {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        color: var(--gold);
+        margin-bottom: 8px;
+        font-weight: 300;
+    }
+    
+    .approach-item {
+        margin-bottom: 32px;
+        display: flex;
+        gap: 12px;
+    }
+    
+    .approach-content {
+        flex: 1;
+    }
+    
+    .approach-content h3 {
+        margin-bottom: 8px;
+    }
+    
+    .gold-divider-small {
+        width: 50px;
+        height: 1px;
+        background: var(--gold);
+        margin-bottom: 32px;
+    }
+    
+    .divider-gradient {
+        width: 100%;
+        height: 1px;
+        background: var(--gold);
+        margin: 50px 0;
+    }
+    
+    @media (max-width: 968px) {
+        .origin-grid, .standfor-grid, .multi-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .standfor-item {
+            border-left: none;
+            border-top: 1px solid rgba(198,164,92,0.15);
+        }
+        
+        .standfor-item:first-child {
+            border-top: none;
+        }
+        
+        .about-hero h1 {
+            font-size: 48px;
+        }
+        
+        .origin-section, .standfor-section, .multi-section {
+            padding: 80px 2rem;
+        }
+        
+        .multi-grid {
+            gap: 40px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 80px 2rem;
+        }
+        
+        .hero-banner {
+            height: 400px;
+        }
+        
+        .hero-content {
+            left: 5%;
+            max-width: 90%;
+        }
+        
+        .about-hero h1 {
+            font-size: 40px;
+        }
+        
+        .origin-text h2, .standfor-header h2 {
+            font-size: 32px;
+        }
+        
+        .standfor-item {
+            padding: 40px 20px;
+        }
+    }
+</style>
+@endpush
+
+@section('content')
+    <main>
+        <section class="about-hero">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1>About AUSHVERA</h1>
+                    <p class="tagline">Rooted in Wisdom. Refined for the Modern World.</p>
+                    <div class="hero-divider"></div>
+                    <p class="hero-description">Aushvera is a luxury botanical wellness house dedicated to creating plant-based formulations grounded in tradition and elevated by precision.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="origin-section">
+            <div class="origin-grid">
+                <div class="origin-text">
+                    <div class="origin-accent"></div>
+                    <h2>A Quiet Beginning</h2>
+                    <p>Aushvera was founded on a simple yet powerful belief — true wellness does not need reinvention; it needs respect.</p>
+                    <p>In an age of synthetic shortcuts and loud marketing, we chose a quieter path. A path rooted in ancient botanical knowledge, disciplined formulation, and intentional design.</p>
+                    <p>Our journey began with a deep appreciation for plant wisdom that has been trusted for centuries. Instead of modernizing nature beyond recognition, we focused on refining it — preserving its integrity while presenting it in a way that fits today's conscious lifestyle.</p>
+                    <p style="font-style: italic; margin-top: 32px;">Aushvera is not built on trends. It is built on timeless principles.</p>
+                </div>
+                <div class="origin-image">
+                    <img src="{{ asset('assets/img/about1.png') }}" alt="Botanical Heritage">
+                </div>
+            </div>
+        </section>
+
+        <section class="standfor-section">
+            <div class="standfor-header">
+                <h2>What We Stand For</h2>
+                <div class="standfor-divider"></div>
+            </div>
+            <div class="standfor-grid">
+                <div class="standfor-item">
+                    <div class="standfor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C12 2 8 4 8 8C8 10 9 12 12 14C15 12 16 10 16 8C16 4 12 2 12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 14C12 14 8 16 8 20C8 22 10 24 12 24C14 24 16 22 16 20C16 16 12 14 12 14Z" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Plant-First Philosophy</h3>
+                    <p>Every formulation begins with nature. We prioritize botanical integrity and avoid unnecessary artificial additions.</p>
+                </div>
+                <div class="standfor-item">
+                    <div class="standfor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L4 7V12C4 16.5 7 20.5 12 22C17 20.5 20 16.5 20 12V7L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Clean-Label Commitment</h3>
+                    <p>Transparency matters. Our approach favors clarity over complexity, simplicity over exaggeration.</p>
+                </div>
+                <div class="standfor-item">
+                    <div class="standfor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Discipline in Craftsmanship</h3>
+                    <p>Luxury is not decoration — it is precision. From extraction methods to packaging details, every step reflects careful execution.</p>
+                </div>
+                <div class="standfor-item">
+                    <div class="standfor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C12 2 8 4 8 8C8 10 9 12 12 14C15 12 16 10 16 8C16 4 12 2 12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 8C6 9 4 11 4 14C4 17 6 20 9 21" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 8C18 9 20 11 20 14C20 17 18 20 15 21" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Sustainability & Responsibility</h3>
+                    <p>Wellness must extend beyond the consumer. Luxury should never compromise ecological respect.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="multi-section">
+            <div class="multi-grid">
+                <div class="section-block">
+                    <h2>Our Approach to Formulation</h2>
+                    <div class="gold-divider-small"></div>
+                    
+                    <div class="approach-item">
+                        <div class="approach-number">1</div>
+                        <div class="approach-content">
+                            <h3>A Slow Philosophy</h3>
+                            <p>Every formulation begins with study, not speed. We prioritize traditional wisdom, evaluate modern standards, and refine through small-batch development.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">2</div>
+                        <div class="approach-content">
+                            <h3>Transparency in Craftsmanship</h3>
+                            <p>Our botanical extracts are carefully processed using controlled methods designed to maintain plant integrity while ensuring consistency and quality.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">3</div>
+                        <div class="approach-content">
+                            <h3>Discipline in Craftsmanship</h3>
+                            <p>We practice slow formulation. We approach it with care, complexity, and respect for the plant's natural intelligence.</p>
+                        </div>
+                    </div>
+
+                    <div class="approach-item">
+                        <div class="approach-number">4</div>
+                        <div class="approach-content">
+                            <h3>Our Vision</h3>
+                            <p>To build Aushvera into a globally respected botanical wellness house — where heritage meets innovation, and where Indian plant wisdom is presented with international refinement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h2>Our Vision</h2>
+                    <p>To build Aushvera into a globally respected botanical wellness house — where heritage meets innovation, and where Indian plant wisdom is presented with international refinement.</p>
+                    <p>We are creating more than products. We are building a legacy designed for longevity.</p>
+                    
+                    <div class="divider-gradient"></div>
+                    
+                    <h2>A Message from the Founder</h2>
+                    <p>Aushvera represents patience, discipline, and belief in doing things correctly — even when the slower path is harder.</p>
+                    <p>This brand was created with a long-term perspective. Not to follow trends, but to establish standards.</p>
+                    <p>Our commitment is simple: Refine nature with integrity. Present it with dignity. Deliver it with responsibility.</p>
+                    <p style="font-style: italic; margin-top: 32px; font-size: 14px; color: #5E5E5E;">This is only the beginning.</p>
+                    <p style="font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--charcoal); margin-top: 20px;">— Founder, Aushvera</p>
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/api-config.js') }}"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.querySelector('.cart-count').textContent = cartCount;
+        document.querySelector('.cart-count').style.display = cartCount > 0 ? 'flex' : 'none';
+    </script>
+@endpush

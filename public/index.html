@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSHVERA — Wellness, Refined by Nature</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="api-config.js"></script>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <nav class="nav-home">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="philosophy.html">PHILOSOPHY</a></li>
+                </ul>
+            </div>
+            <a class="nav-center" href="index.html">
+                <img src="assets/img/logo.png" alt="AUSHVERA Logo" class="nav-logo">
+                <span>AUSHVERA</span>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#" onclick="navigateToProducts(event)">PRODUCT</a></li>
+                    <li><a href="ritual.html">RITUAL</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <a href="chart.html" class="cart-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="profile.html" class="nav-icon" id="profileIcon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="banner-slider">
+            <div class="banner-slide active">
+                <img src="assets/img/banner1.png" alt="Aushvera Banner 1">
+            </div>
+            <div class="banner-slide">
+                <img src="assets/img/banner2.png" alt="Aushvera Banner 2">
+            </div>
+            <div class="banner-slide">
+                <img src="assets/img/banner3.png" alt="Aushvera Banner 3">
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-slide-content active">
+                <div class="hero-text">
+                    <div class="ornamental-divider">
+                        <img src="assets/img/pattern.png" alt="" style="width: 500px; height: auto;">
+                    </div>
+                    <h1>Discover The<br><span style="color: #B8964C; font-size: 72px; font-family: 'Playfair Display', serif; font-style: italic;">Healing Wisdom</span><br>of Ayurveda</h1>
+                    <div class="ornamental-divider">
+                        <img src="assets/img/pattern.png" alt="" style="width: 500px; height: auto; transform: scaleY(-1);">
+                    </div>
+                    <a href="product.html" class="cta-primary" style="margin-top: 2rem;">SHOP NOW</a>
+                </div>
+            </div>
+            <div class="hero-slide-content">
+                <div class="hero-text">
+                    <div class="ornamental-divider">
+                        <img src="assets/img/pattern.png" alt="" style="width: 500px; height: auto;">
+                    </div>
+                    <h1>Embrace<br><span style="color: #B8964C; font-size: 72px; font-family: 'Playfair Display', serif; font-style: italic;">Ancient Rituals</span><br>for Modern Life</h1>
+                    <div class="ornamental-divider">
+                        <img src="assets/img/pattern.png" alt="" style="width: 500px; height: auto; transform: scaleY(-1);">
+                    </div>
+                    <a href="ritual.html" class="cta-primary" style="margin-top: 2rem;">EXPLORE RITUALS</a>
+                </div>
+            </div>
+            <div class="hero-slide-content">
+                <div class="hero-text">
+                    <h1 style="font-family: 'Cinzel', serif; font-size: 60px; color: var(--cream); letter-spacing: 0.05em; line-height: 1.1; margin-bottom: 32px;">Wellness,<br>Refined by Nature.</h1>
+                    <p style="font-size: 16px; color: rgba(247, 244, 238, 0.75); font-weight: 300; line-height: 1.7; max-width: 550px; margin-bottom: 48px;">Rooted in ancient botanical wisdom, crafted for the modern world.</p>
+                    <a href="ritual.html" class="cta-primary">Explore the Ritual</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="heritage fade-in">
+        <div class="heritage-grid">
+            <div class="heritage-text">
+                <h2>Honoring Heritage, Refining Wellness.</h2>
+                <p>For centuries, botanical rituals have sustained vitality across cultures. AUSHVERA honors this wisdom—not by replicating the past, but by refining it for the present.</p>
+                <p>Each formulation is a study in restraint: only what serves, nothing more. Clean ingredients. Timeless presentation. Quiet confidence.</p>
+                <p>Improve respiratory health and digestion.</p>
+                <a href="about.html" class="btn-outline">Our Story</a>
+            </div>
+            <div class="heritage-image">
+                <img src="assets/img/ritual-image.png" alt="Ritual Scene" style="width: 80%; height: 80%; object-fit: contain;">
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section fade-in">
+        <h2>The Aushvera Philosophy</h2>
+        <div class="pillars">
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <img src="assets/img/purity.png" alt="Purity" style="width: 100px; height: 100px; object-fit: contain;">
+                </div>
+                <h3>Plant-First Formulation</h3>
+                <p>Botanicals chosen for their time-tested efficacy, not trends.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <img src="assets/img/legacy.png" alt="Legacy" style="width: 100px; height: 100px; object-fit: contain;">
+                </div>
+                <h3>Clean-Label Integrity</h3>
+                <p>Every ingredient listed. No proprietary blends. Total transparency.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <img src="assets/img/precision.png" alt="Precision" style="width: 100px; height: 100px; object-fit: contain;">
+                </div>
+                <h3>Timeless Presentation</h3>
+                <p>Designed to endure beyond seasons, campaigns, and hype.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="purity-section fade-in">
+        <div class="container-narrow">
+            <h2>Purity & Sourcing</h2>
+            <div class="divider-gold"></div>
+            <p class="section-intro">Every ingredient is traced, tested, and transparently sourced from ethical partners who share our commitment to botanical integrity.</p>
+            <div class="purity-grid">
+                <div class="purity-item">
+                    <h3>Water-Based Extraction</h3>
+                    <p>No harsh chemicals. Only pure water extraction to preserve the natural essence of each botanical.</p>
+                </div>
+                <div class="purity-item">
+                    <h3>Third-Party Tested</h3>
+                    <p>Every batch undergoes rigorous testing for purity, potency, and safety by independent laboratories.</p>
+                </div>
+                <div class="purity-item">
+                    <h3>Sustainable Sourcing</h3>
+                    <p>We partner with regenerative farms that honor the earth and support local communities.</p>
+                </div>
+                <div class="purity-item">
+                    <h3>No Artificial Additives</h3>
+                    <p>Zero preservatives, fillers, or synthetic ingredients. Only what nature intended.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-carousel-section fade-in">
+        <h2>Our Wellness Collection</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item" onclick="window.location.href='product.html?id=1'" style="cursor:pointer">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/product.jpeg" alt="Ashvattha Tea">
+                        </div>
+                        <h3>Ashvattha™ Tea</h3>
+                        <p>Sacred leaf wellness</p>
+                    </div>
+                </div>
+                <div class="carousel-item" onclick="window.location.href='product.html?id=2'" style="cursor:pointer">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/ritual-1.jpeg" alt="Herbal Elixir">
+                        </div>
+                        <h3>Herbal Elixir</h3>
+                        <p>Daily vitality blend</p>
+                    </div>
+                </div>
+                <div class="carousel-item" onclick="window.location.href='product.html?id=3'" style="cursor:pointer">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/ritual-2.jpeg" alt="Botanical Tonic">
+                        </div>
+                        <h3>Botanical Tonic</h3>
+                        <p>Restorative formula</p>
+                    </div>
+                </div>
+                <div class="carousel-item" onclick="window.location.href='product.html?id=4'" style="cursor:pointer">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="assets/img/ritual-3.jpeg" alt="Wellness Drops">
+                        </div>
+                        <h3>Wellness Drops</h3>
+                        <p>Concentrated essence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-showcase-section fade-in">
+        <div class="product-showcase-grid">
+            <div class="product-text">
+                <h2>Ashvattha Classic</h2>
+                <p class="product-tagline">A Sacred Leaf. A Modern Ritual.</p>
+                <ul class="product-benefits">
+                    <li>Naturally calming</li>
+                    <li>Traditionally respected</li>
+                    <li>Designed for daily rituals</li>
+                </ul>
+                <a href="#" onclick="navigateToProducts(event)" class="cta-primary">Discover More</a>
+            </div>
+            <div class="product-image-container">
+                <img src="assets/img/Ashvattha Classic.jpeg" alt="Ashvattha Classic" class="showcase-product-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="ritual-section fade-in" id="ritual">
+        <h2>Your Daily Ritual</h2>
+        <div class="ritual-steps-grid">
+            <div class="ritual-step">
+                <div class="ritual-number">1</div>
+                <h3>Morning Intention</h3>
+                <p>Begin each day with a moment of stillness and a cup of Ashvattha™.</p>
+            </div>
+            <div class="ritual-step">
+                <div class="ritual-number">2</div>
+                <h3>Mindful Preparation</h3>
+                <p>Steep with care. Let the ritual slow you down, even for a moment.</p>
+            </div>
+            <div class="ritual-step">
+                <div class="ritual-number">3</div>
+                <h3>Consistent Practice</h3>
+                <p>Wellness unfolds over time. Commit to the practice, not the promise.</p>
+            </div>
+        </div>
+        <div class="ritual-cta">
+            <a href="ritual.html" class="btn-outline">Discover Ashvattha™</a>
+        </div>
+    </section>
+
+    
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="AUSHVERA">
+            </div>
+            <p class="footer-tagline">Rooted in heritage. Refined for modern ritual.</p>
+            <div class="footer-divider"></div>
+        </div>
+
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>About Aushvera</h3>
+                <p>A premium Ayurvedic wellness brand honoring ancient botanical wisdom through refined, modern formulations. Each product embodies our commitment to purity, transparency, and timeless elegance.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="philosophy.html">Philosophy</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="ritual.html">Ritual</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Gurukul Rd, Gandhidham, India, 370201</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>aushveraglobalbiz1718@gmail.com</span>
+                    </li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/theaushvera?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aushvera-globalbiz-llp-322470380" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 AUSHVERA. All rights reserved. | <a href="#" style="color: #C6A75E; text-decoration: none;">Terms & Conditions</a></p>
+        </div>
+    </footer>
+    
+    <div id="cartModal" class="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Added to Cart!</h2>
+            <p>Product has been added to your cart.</p>
+            <div class="modal-buttons">
+                <button class="btn-continue" onclick="closeModal()">Continue Shopping</button>
+                <button class="btn-checkout" onclick="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Cart functionality
+        let cartCount = 0;
+        
+        async function updateCartDisplay() {
+            const cartCountElement = document.querySelector('.cart-count');
+            if (!cartCountElement) return;
+            
+            if (api.getToken()) {
+                try {
+                    const response = await api.getCartCount();
+                    cartCount = response.data.count;
+                } catch (error) {
+                    cartCount = 0;
+                }
+            } else {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+            
+            cartCountElement.textContent = cartCount;
+            cartCountElement.style.display = cartCount > 0 ? 'flex' : 'none';
+        }
+        
+        updateCartDisplay();
+
+        function addToCart() {
+            const product = {
+                id: 'essential-elixir',
+                name: 'The Essential Elixir',
+                description: '60ml / 2 fl oz',
+                price: 29.00,
+                image: 'assets/img/product.jpeg',
+                quantity: 1
+            };
+            
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            localStorage.setItem('cartCount', cartCount);
+            updateCartDisplay();
+            showModal();
+        }
+
+        function showModal() {
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function checkout() {
+            window.location.href = 'chart.html';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Banner slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const textSlides = document.querySelectorAll('.hero-slide-content');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            if (textSlides[currentSlide]) textSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            if (textSlides[currentSlide]) textSlides[currentSlide].classList.add('active');
+        }
+        
+        if (slides.length > 1) {
+            setInterval(nextSlide, 5000);
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Auth state check
+        async function checkAuthState() {
+            const token = api.getToken();
+            const profileIcon = document.getElementById('profileIcon');
+            
+            if (token) {
+                try {
+                    const response = await api.getUser();
+                    const user = response.data;
+                    
+                    if (user.role === 'admin') {
+                        profileIcon.href = 'admin.html';
+                        profileIcon.title = 'Admin Dashboard';
+                    } else {
+                        profileIcon.href = 'profile.html';
+                        profileIcon.title = 'My Profile';
+                    }
+                } catch (error) {
+                    profileIcon.href = 'profile.html';
+                    profileIcon.title = 'Profile';
+                }
+            } else {
+                profileIcon.href = 'profile.html';
+                profileIcon.title = 'Profile';
+            }
+        }
+        
+        checkAuthState();
+
+        async function navigateToProducts(e) {
+            e.preventDefault();
+            try {
+                const response = await api.getProducts();
+                if (response.data && response.data.length === 1) {
+                    window.location.href = 'product.html?id=' + response.data[0].id;
+                } else {
+                    window.location.href = 'products.html';
+                }
+            } catch (error) {
+                window.location.href = 'products.html';
+            }
+        }
+    </script>
+    </script>
+</body>
+</html>

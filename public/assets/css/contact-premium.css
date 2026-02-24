@@ -1,0 +1,142 @@
+/* Premium Contact Page - Exact Luxury Specification */
+
+.premium-contact-section {
+    padding: 10rem 3rem 8rem;
+    background: #F5EFE6;
+}
+
+.premium-contact-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.product-visual-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Premium Form Box - Flat Matte Navy with Double Gold Border */
+.premium-form-box {
+    background: #0B1C2D;
+    border: 2px solid #C6A75E;
+    padding: 4rem 3rem;
+    position: relative;
+    text-align: center;
+}
+
+.premium-form-box::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid #C6A75E;
+    pointer-events: none;
+}
+
+.premium-form-box h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #F5EFE6;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+/* Premium Form */
+.premium-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.premium-input-group {
+    position: relative;
+}
+
+.premium-input-group input,
+.premium-input-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #C6A75E;
+    color: #F5EFE6;
+    font-size: 1rem;
+    padding: 1rem 0;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.premium-input-group input::placeholder,
+.premium-input-group textarea::placeholder {
+    color: #C6A75E;
+    opacity: 0.6;
+}
+
+.premium-input-group textarea {
+    resize: none;
+}
+
+/* Premium Button - Solid Muted Gold */
+.premium-button {
+    padding: 1.2rem 3rem;
+    background: #C6A75E;
+    border: none;
+    color: #0B1C2D;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: opacity 0.3s;
+}
+
+.premium-button:hover {
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .premium-contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .product-visual-left {
+        order: 2;
+    }
+    
+    .premium-form-box {
+        order: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .premium-contact-section {
+        padding: 8rem 2rem 6rem;
+    }
+    
+    .premium-form-box {
+        padding: 3rem 2rem;
+    }
+    
+    .premium-form-box::before {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .premium-form-box h1 {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,831 @@
+/* Page Hero */
+.page-hero {
+    padding: 12rem 3rem 6rem;
+    background: linear-gradient(135deg, var(--navy-midnight) 0%, var(--navy-deep) 100%);
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 4rem;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--gold-soft);
+    font-weight: 300;
+}
+
+/* Container Utilities */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.container-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+/* About Page (luxury editorial layout) */
+.about-hero {
+    padding: 10rem 3rem;
+    background: #F5EFE6; /* requested warm cream */
+    position: relative;
+    overflow: hidden;
+}
+.about-hero::before {
+    /* soft golden dust / spotlight */
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -15%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle at 20% 20%, rgba(198,164,90,0.12), transparent 25%);
+    filter: blur(60px);
+    transform: rotate(8deg);
+    pointer-events: none;
+}
+.about-hero::after {
+    /* subtle paper texture overlay (very low opacity) */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(0,0,0,0.02), transparent 40%);
+    opacity: 0.03;
+    pointer-events: none;
+}
+.about-hero .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.about-hero .hero-left h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    color: #0D1B2A; /* deep navy */
+    line-height: 1.05;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+.about-hero .hero-left p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    color: #0D1B2A;
+    opacity: 0.85;
+    max-width: 560px;
+}
+.about-hero .hero-right { display:flex; justify-content:center; align-items:center; }
+.about-hero .product-shot {
+    width: 440px;
+    padding: 2rem;
+    background: linear-gradient(180deg, rgba(198,164,90,0.03), rgba(198,164,90,0.01));
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(13,27,42,0.12);
+    position: relative;
+}
+.about-hero .product-shot img { width:100%; height:auto; display:block; object-fit:contain; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.12)); }
+
+.origin-section { padding: 8rem 3rem; background: #F5EFE6; }
+.origin-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.origin-section h2 { font-family: 'Cinzel', serif; color: #0D1B2A; font-size: 34px; position: relative; display: inline-block; }
+.origin-section h2::after { content: ''; display: block; height: 2px; width: 120px; background: #C6A45C; margin-top: 12px; }
+.origin-section p { color: #0D1B2A; opacity: 0.85; line-height: 1.9; }
+.origin-image img { width:100%; height:auto; border-radius:8px; box-shadow: 0 20px 60px rgba(13,27,42,0.08); background: #fff; padding: 0.5rem; }
+
+.standfor-section { padding: 8rem 3rem; background: #F5EFE6; text-align: center; }
+.standfor-section h2 { font-family: 'Cinzel', serif; color: #0D1B2A; font-size: 36px; margin-bottom: 1rem; }
+.standfor-section .divider { width: 140px; height: 2px; background: #C6A45C; margin: 0 auto 2rem; }
+.standfor-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 1200px; margin: 0 auto; padding-top: 40px; border-top: 1px solid rgba(13,27,42,0.04); border-bottom: 1px solid rgba(13,27,42,0.04); }
+.standfor-item { padding: 3rem 2rem; text-align: center; border-left: 1px solid rgba(13,27,42,0.06); }
+.standfor-item:first-child { border-left: none; }
+.standfor-icon { width: 56px; height: 56px; margin: 0 auto 1rem; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg, rgba(198,164,90,0.06), rgba(198,164,90,0.02)); border-radius: 50%; color: #C6A45C; }
+.standfor-item h3 { color: #0D1B2A; font-size: 1.05rem; margin-bottom: 0.75rem; }
+.standfor-item p { color: #0D1B2A; opacity: 0.85; line-height: 1.7; font-size: 0.98rem; }
+
+.quality-section { padding: 6rem 3rem; background: #F5EFE6; text-align: center; }
+.quality-section h3 { font-family: 'Cinzel', serif; color: #0D1B2A; font-size: 28px; margin-bottom: 1rem; }
+.quality-section ul { display: inline-block; text-align: left; list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.quality-section ul li { padding: 0.6rem 0; color: #0D1B2A; opacity: 0.85; position: relative; padding-left: 1.6rem; }
+.quality-section ul li::before { content: '•'; position: absolute; left: 0; top: 0; color: #C6A45C; font-weight: 700; }
+
+.vision-section { padding: 8rem 3rem; background: #F5EFE6; }
+.vision-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.vision-content h2 { font-family: 'Cinzel', serif; color: #0D1B2A; font-size: 32px; margin-bottom: 1.25rem; }
+.vision-image img { width:100%; height:auto; border-radius:8px; box-shadow: 0 30px 80px rgba(13,27,42,0.08); }
+
+@media (max-width: 1200px) {
+    .about-hero .hero-grid, .origin-grid, .vision-grid {
+        gap: 4rem;
+    }
+    
+    .standfor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 968px) {
+    .about-hero {
+        padding: 6rem 2rem;
+    }
+    
+    .about-hero .hero-grid, .origin-grid, .standfor-grid, .vision-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .standfor-item {
+        border-left: none;
+        border-top: 1px solid rgba(13,27,42,0.06);
+    }
+    
+    .standfor-item:first-child {
+        border-top: none;
+    }
+    
+    .about-hero .product-shot {
+        width: 70%;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+    
+    .about-hero .hero-left h1 {
+        font-size: 38px;
+    }
+    
+    .origin-section, .standfor-section, .vision-section {
+        padding: 5rem 2rem;
+    }
+    
+    .origin-section h2, .standfor-section h2, .vision-content h2 {
+        font-size: 28px;
+    }
+}
+
+/* Philosophy Page */
+
+/* Philosophy Page */
+.manifesto {
+    padding: 10rem 3rem;
+    background: var(--cream);
+}
+
+.manifesto-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.divider-gold {
+    width: 120px;
+    height: 2px;
+    background: var(--gold);
+    margin: 4rem auto;
+}
+
+.manifesto h1 {
+    font-size: 4rem;
+    color: var(--navy-deep);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.manifesto-text {
+    margin: 4rem 0;
+}
+
+.manifesto-text p {
+    font-size: 1.2rem;
+    color: var(--navy-deep);
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    line-height: 1.9;
+}
+
+.manifesto-text .large {
+    font-size: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+}
+
+.principles {
+    display: grid;
+    gap: 5rem;
+    margin: 6rem 0;
+}
+
+.principle {
+    text-align: center;
+}
+
+.principle-icon {
+    margin-bottom: 2rem;
+}
+
+.principle h3 {
+    font-size: 2rem;
+    color: var(--navy-deep);
+    margin-bottom: 1.5rem;
+}
+
+.principle p {
+    font-size: 1.1rem;
+    color: var(--navy-deep);
+    opacity: 0.8;
+    line-height: 1.8;
+}
+
+/* Product Page */
+.product-hero {
+    padding: 10rem 3rem 8rem;
+    background: var(--cream);
+}
+
+.product-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+}
+
+.product-info h1 {
+    font-size: 3.5rem;
+    color: var(--navy-deep);
+    margin-bottom: 1rem;
+}
+
+.product-subtitle {
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.product-description {
+    font-size: 1.1rem;
+    color: var(--navy-deep);
+    opacity: 0.85;
+    line-height: 1.9;
+    margin: 2rem 0;
+}
+
+.product-details {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(11, 28, 45, 0.1);
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--navy-deep);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.detail-value {
+    font-size: 1rem;
+    color: var(--navy-deep);
+    font-weight: 500;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 8rem 3rem;
+    background: var(--beige);
+}
+
+.benefits h2 {
+    font-size: 3rem;
+    color: var(--navy-deep);
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.benefit-list {
+    display: grid;
+    gap: 3rem;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.bullet-gold {
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.benefit-item h3 {
+    font-size: 1.5rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.8rem;
+}
+
+.benefit-item p {
+    font-size: 1.05rem;
+    color: var(--navy-deep);
+    opacity: 0.8;
+    line-height: 1.8;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 8rem 3rem;
+    background: var(--navy-deep);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 3rem;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    color: var(--gold-soft);
+    margin-bottom: 3rem;
+}
+
+.cta-secondary {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    border-radius: 2px;
+}
+
+.cta-secondary:hover {
+    background: var(--gold);
+    color: var(--navy-deep);
+}
+
+/* Ritual Steps */
+.ritual-steps {
+    padding: 8rem 3rem;
+    background: var(--cream);
+}
+
+.step {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.step-icon {
+    margin-bottom: 2rem;
+}
+
+.step h3 {
+    font-size: 2rem;
+    color: var(--navy-deep);
+    margin-bottom: 1.5rem;
+}
+
+.step p {
+    font-size: 1.1rem;
+    color: var(--navy-deep);
+    opacity: 0.85;
+    line-height: 1.8;
+}
+
+/* Ritual Notes */
+.ritual-notes {
+    padding: 8rem 3rem;
+    background: var(--beige);
+}
+
+.ritual-notes h2 {
+    font-size: 2.5rem;
+    color: var(--navy-deep);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.note-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.note-list p {
+    font-size: 1.05rem;
+    color: var(--navy-deep);
+    opacity: 0.8;
+    line-height: 1.8;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.note-list p::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+/* Contact Form */
+.contact-form-section {
+    padding: 8rem 3rem;
+    background: var(--cream);
+}
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: grid;
+    gap: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--navy-deep);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--navy-deep);
+    font-size: 1rem;
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--navy-deep);
+}
+
+.btn-submit {
+    padding: 1rem 3rem;
+    background: var(--gold);
+    border: none;
+    color: var(--navy-deep);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background: var(--navy-deep);
+    color: var(--cream);
+}
+
+/* Contact Info */
+.contact-info {
+    padding: 6rem 3rem;
+    background: var(--beige);
+    text-align: center;
+}
+
+.info-text {
+    font-size: 1.1rem;
+    color: var(--navy-deep);
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.link-gold {
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.link-gold:hover {
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .content-grid, .product-showcase {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 3rem;
+    }
+    
+    .manifesto h1 {
+        font-size: 3rem;
+    }
+    
+    .product-info h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-hero {
+        padding: 10rem 2rem 4rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .container, .container-narrow {
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .content-grid, .product-showcase {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .page-hero {
+        padding: 8rem 2rem 4rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 3rem;
+    }
+    
+    .manifesto {
+        padding: 6rem 2rem;
+    }
+    
+    .manifesto h1 {
+        font-size: 3rem;
+    }
+    
+    .manifesto-text p {
+        font-size: 1.1rem;
+    }
+    
+    .manifesto-text .large {
+        font-size: 1.5rem;
+    }
+    
+    .product-info h1 {
+        font-size: 2.5rem;
+    }
+    
+    .product-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .benefits {
+        padding: 5rem 2rem;
+    }
+    
+    .benefits h2 {
+        font-size: 2.5rem;
+    }
+    
+    .ritual-steps, .ritual-notes {
+        padding: 5rem 2rem;
+    }
+    
+    .contact-form-section, .contact-info {
+        padding: 5rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 5rem 1.5rem;
+    }
+    
+    .about-hero .hero-left h1 {
+        font-size: 32px;
+    }
+    
+    .about-hero .hero-left p {
+        font-size: 1rem;
+    }
+    
+    .about-hero .product-shot {
+        width: 85%;
+        padding: 1rem;
+    }
+    
+    .origin-section, .standfor-section, .vision-section, .quality-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .origin-section h2, .standfor-section h2, .vision-content h2, .quality-section h3 {
+        font-size: 24px;
+    }
+    
+    .standfor-item {
+        padding: 2rem 1rem;
+    }
+    
+    .page-hero {
+        padding: 6rem 1.5rem 3rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .manifesto {
+        padding: 5rem 1.5rem;
+    }
+    
+    .manifesto h1 {
+        font-size: 2.5rem;
+    }
+    
+    .manifesto-text p {
+        font-size: 1rem;
+    }
+    
+    .manifesto-text .large {
+        font-size: 1.3rem;
+    }
+    
+    .principle h3 {
+        font-size: 1.6rem;
+    }
+    
+    .principle p {
+        font-size: 1rem;
+    }
+    
+    .product-hero {
+        padding: 6rem 1.5rem 5rem;
+    }
+    
+    .product-info h1 {
+        font-size: 2rem;
+    }
+    
+    .product-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .product-description {
+        font-size: 1rem;
+    }
+    
+    .benefits {
+        padding: 4rem 1.5rem;
+    }
+    
+    .benefits h2 {
+        font-size: 2rem;
+    }
+    
+    .benefit-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .benefit-item p {
+        font-size: 1rem;
+    }
+    
+    .cta-section {
+        padding: 5rem 1.5rem;
+    }
+    
+    .cta-section h2 {
+        font-size: 2.2rem;
+    }
+    
+    .cta-section p {
+        font-size: 1.1rem;
+    }
+    
+    .ritual-steps, .ritual-notes {
+        padding: 4rem 1.5rem;
+    }
+    
+    .step h3 {
+        font-size: 1.6rem;
+    }
+    
+    .step p {
+        font-size: 1rem;
+    }
+    
+    .ritual-notes h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-form-section, .contact-info {
+        padding: 4rem 1.5rem;
+    }
+    
+    .form-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero {
+        padding: 4rem 1rem;
+    }
+    
+    .about-hero .hero-left h1 {
+        font-size: 26px;
+    }
+    
+    .about-hero .product-shot {
+        width: 100%;
+    }
+    
+    .origin-section, .standfor-section, .vision-section, .quality-section {
+        padding: 3rem 1rem;
+    }
+    
+    .origin-section h2, .standfor-section h2, .vision-content h2, .quality-section h3 {
+        font-size: 22px;
+    }
+    
+    .standfor-item {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .page-hero {
+        padding: 5rem 1rem 2rem;
+    }
+    
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .manifesto {
+        padding: 4rem 1rem;
+    }
+    
+    .manifesto h1 {
+        font-size: 2rem;
+    }
+    
+    .product-hero {
+        padding: 5rem 1rem 4rem;
+    }
+    
+    .product-info h1 {
+        font-size: 1.6rem;
+    }
+    
+    .benefits, .cta-section, .ritual-steps, .ritual-notes, .contact-form-section, .contact-info {
+        padding: 3rem 1rem;
+    }
+    
+    .benefits h2, .cta-section h2, .ritual-notes h2 {
+        font-size: 1.6rem;
+    }
+    
+    .container, .container-narrow {
+        padding: 0 1rem;
+    }
+}

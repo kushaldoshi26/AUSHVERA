@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSHVERA — About Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #F5EFE6;
+            font-family: 'Inter', sans-serif;
+            color: #1C1C1C;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(198,164,92,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(198,164,92,0.015) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .about-section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .left-column h2,
+        .right-column h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            color: #1C1C1C;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+        }
+
+        .gold-divider {
+            width: 50px;
+            height: 1px;
+            background: #C6A45C;
+            margin-bottom: 40px;
+        }
+
+        .approach-list {
+            list-style: none;
+        }
+
+        .approach-item {
+            margin-bottom: 40px;
+        }
+
+        .approach-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: #C6A45C;
+            margin-bottom: 8px;
+        }
+
+        .approach-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 400;
+            font-style: italic;
+            color: #1C1C1C;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .approach-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #5E5E5E;
+            letter-spacing: 0.3px;
+            font-weight: 300;
+        }
+
+        .right-column .vision-content {
+            margin-bottom: 60px;
+        }
+
+        .right-column p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #5E5E5E;
+            letter-spacing: 0.3px;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, #C6A45C 0%, transparent 100%);
+            margin: 50px 0;
+        }
+
+        .founder-message {
+            text-align: left;
+        }
+
+        .founder-message h2 {
+            margin-bottom: 24px;
+        }
+
+        .founder-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: #1C1C1C;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 968px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-section {
+                padding: 80px 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-column h2,
+            .right-column h2 {
+                font-size: 28px;
+            }
+
+            .approach-subtitle {
+                font-size: 18px;
+            }
+
+            .approach-text,
+            .right-column p {
+                font-size: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <section class="about-section">
+        <div class="two-column-grid">
+            <div class="left-column">
+                <h2>Our Approach to Formulation</h2>
+                <div class="gold-divider"></div>
+                
+                <ul class="approach-list">
+                    <li class="approach-item">
+                        <div class="approach-number">1</div>
+                        <h3 class="approach-subtitle">Plant-First Philosophy</h3>
+                        <p class="approach-text">Every formulation begins with study, not speed. We prioritize traditional wisdom, evaluate modern standards, and refine through small-batch development.</p>
+                    </li>
+
+                    <li class="approach-item">
+                        <div class="approach-number">2</div>
+                        <h3 class="approach-subtitle">Clean-Label Commitment</h3>
+                        <p class="approach-text">Transparency matters. Our ingredients are clearly listed, completely traceable. We favor clarity over complexity, simplicity over exaggeration.</p>
+                    </li>
+
+                    <li class="approach-item">
+                        <div class="approach-number">3</div>
+                        <h3 class="approach-subtitle">Discipline in Craftsmanship</h3>
+                        <p class="approach-text">Luxury is not decoration — it is precision. From extraction methods to packaging details, every step reflects careful execution and refined taste.</p>
+                    </li>
+
+                    <li class="approach-item">
+                        <div class="approach-number">4</div>
+                        <h3 class="approach-subtitle">Our Vision</h3>
+                        <p class="approach-text">To build Aushvera into a globally respected botanical wellness house — where heritage meets innovation, and where Indian plant wisdom is presented with international refinement.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="right-column">
+                <div class="vision-content">
+                    <h2>Our Vision</h2>
+                    <p>To build Aushvera into a globally respected botanical wellness house — where heritage meets innovation, and where Indian plant wisdom is presented with international refinement.</p>
+                    <p>We are creating more than products. We are building a legacy designed for longevity.</p>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <div class="founder-message">
+                    <h2>A Message from the Founder</h2>
+                    <p>Aushvera represents patience, discipline, and belief in doing things correctly — even when the slower path is harder.</p>
+                    <p>This brand was created with a long-term perspective. Not to follow trends, but to establish standards.</p>
+                    <p>Our commitment is simple: Refine nature with integrity. Present it with dignity. Deliver it with responsibility.</p>
+                    <p style="font-style: italic; margin-top: 32px;">This is only the beginning.</p>
+                    <p class="founder-signature">— Founder, Aushvera</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

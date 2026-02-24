@@ -1,0 +1,109 @@
+/* AUSHVERA Admin Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #F7F4EE !important;
+    color: #0B1C2D !important;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Sidebar */
+aside {
+    background: #0B1C2D !important;
+    border-right: 1px solid rgba(198, 167, 94, 0.2) !important;
+}
+
+/* Header */
+header {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid rgba(198, 167, 94, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(11, 28, 45, 0.05) !important;
+}
+
+/* Main Content */
+main {
+    background: #F7F4EE !important;
+}
+
+/* Cards */
+.bg-white, .bg-\[#0a1520\] {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(198, 167, 94, 0.15) !important;
+    box-shadow: 0 4px 20px rgba(11, 28, 45, 0.08) !important;
+}
+
+/* Tables */
+table {
+    background: #FFFFFF !important;
+}
+
+thead {
+    background: rgba(247, 244, 238, 0.5) !important;
+    border-bottom: 2px solid rgba(198, 167, 94, 0.2) !important;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(198, 167, 94, 0.1) !important;
+}
+
+tbody tr:hover {
+    background: rgba(247, 244, 238, 0.3) !important;
+}
+
+th, td {
+    color: #0B1C2D !important;
+}
+
+/* Forms */
+input, select, textarea {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(198, 167, 94, 0.3) !important;
+    color: #0B1C2D !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: #C6A75E !important;
+    box-shadow: 0 0 0 3px rgba(198, 167, 94, 0.1) !important;
+}
+
+/* Buttons */
+button, .btn {
+    transition: all 0.3s ease;
+}
+
+.bg-\[#C6A75E\], .bg-blue-600, .bg-green-600 {
+    background: linear-gradient(135deg, #B8964C, #C6A75E) !important;
+    color: #FFFFFF !important;
+}
+
+.bg-\[#C6A75E\]:hover, .bg-blue-600:hover, .bg-green-600:hover {
+    background: linear-gradient(135deg, #C6A75E, #B8964C) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 150, 76, 0.3) !important;
+}
+
+/* Text Colors */
+.text-\[#C6A75E\] {
+    color: #C6A75E !important;
+}
+
+.text-gray-400, .text-gray-500, .text-gray-600 {
+    color: rgba(11, 28, 45, 0.6) !important;
+}
+
+/* Modals */
+.modal-content {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(198, 167, 94, 0.2) !important;
+    color: #0B1C2D !important;
+}
+
+/* Rounded corners */
+.rounded, .rounded-lg, .rounded-xl {
+    border-radius: 12px !important;
+}

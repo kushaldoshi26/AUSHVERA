@@ -1,0 +1,205 @@
+/* Auth Section */
+.auth-section {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #E8DFD3 0%, #F0E8DC 100%);
+    margin-top: 80px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.auth-box, .profile-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(198, 167, 94, 0.2);
+}
+
+.auth-box h1, .profile-box h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--navy-deep);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(198, 167, 94, 0.3);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(198, 167, 94, 0.1);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #B8975D 0%, #C6A75E 50%, #B8975D 100%);
+    border: none;
+    border-radius: 4px;
+    color: var(--navy-deep);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.auth-btn:hover {
+    background: linear-gradient(135deg, #C6A75E 0%, #E8D7A5 50%, #C6A75E 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(198, 167, 94, 0.3);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--charcoal);
+    font-size: 0.9rem;
+}
+
+.auth-link a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-link a:hover {
+    color: var(--navy-deep);
+}
+
+/* Profile Page */
+.profile-header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(198, 167, 94, 0.2);
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, rgba(198, 167, 94, 0.1), rgba(198, 167, 94, 0.05));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gold);
+}
+
+.profile-avatar svg {
+    stroke: var(--gold);
+}
+
+.user-email {
+    color: var(--charcoal);
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
+.profile-actions {
+    padding: 2rem 0 0;
+    text-align: center;
+}
+
+.logout-btn {
+    padding: 0.9rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: var(--gold);
+    color: var(--navy-deep);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+    .auth-box, .profile-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .auth-box h1, .profile-box h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-section {
+        padding: 2rem 1rem;
+    }
+    
+    .auth-box, .profile-box {
+        padding: 1.5rem 1rem;
+    }
+    
+    .auth-box h1, .profile-box h1 {
+        font-size: 1.6rem;
+    }
+    
+    .auth-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .logout-btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSHVERA - Feature Tester</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #1a1a1a; margin-bottom: 30px; text-align: center; }
+        .section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section h2 { color: #333; margin-bottom: 15px; border-bottom: 2px solid #B8964C; padding-bottom: 10px; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .test-item { border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; background: #fafafa; }
+        .test-item h3 { color: #555; font-size: 16px; margin-bottom: 10px; }
+        .test-item button { background: #B8964C; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 10px; }
+        .test-item button:hover { background: #a07d3c; }
+        .test-item button.secondary { background: #6c757d; }
+        .test-item button.secondary:hover { background: #5a6268; }
+        .test-item button.danger { background: #dc3545; }
+        .test-item button.danger:hover { background: #c82333; }
+        .result { margin-top: 10px; padding: 10px; border-radius: 4px; font-size: 14px; max-height: 200px; overflow-y: auto; }
+        .result.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .result.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .result.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 4px; }
+        .auth-status { position: fixed; top: 20px; right: 20px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 1000; }
+        .auth-status.logged-in { border-left: 4px solid #28a745; }
+        .auth-status.logged-out { border-left: 4px solid #dc3545; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="auth-status" id="authStatus">
+        <strong>Auth Status:</strong> <span id="authStatusText">Checking...</span><br>
+        <small id="authUserInfo"></small>
+    </div>
+
+    <div class="container">
+        <h1>🧪 AUSHVERA Feature Tester</h1>
+
+        <!-- Authentication Tests -->
+        <div class="section">
+            <h2>🔐 Authentication Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Register User</h3>
+                    <input type="text" id="regName" placeholder="Name" value="Test User">
+                    <input type="email" id="regEmail" placeholder="Email" value="test@example.com">
+                    <input type="password" id="regPassword" placeholder="Password" value="password123">
+                    <button onclick="testRegister()">Register</button>
+                    <div id="regResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Login User</h3>
+                    <input type="email" id="loginEmail" placeholder="Email" value="test@example.com">
+                    <input type="password" id="loginPassword" placeholder="Password" value="password123">
+                    <button onclick="testLogin()">Login</button>
+                    <div id="loginResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Current User</h3>
+                    <button onclick="testGetUser()">Get User Info</button>
+                    <div id="userResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Logout</h3>
+                    <button class="danger" onclick="testLogout()">Logout</button>
+                    <div id="logoutResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Tests -->
+        <div class="section">
+            <h2>🎨 Banner Tests (Frontend Integration)</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Get Active Banners</h3>
+                    <button onclick="testGetBanners()">Load Banners</button>
+                    <div id="bannersResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Create Banner (Admin)</h3>
+                    <input type="text" id="bannerTitle" placeholder="Banner Title" value="Test Banner">
+                    <input type="text" id="bannerImage" placeholder="Image URL" value="https://via.placeholder.com/1200x400">
+                    <input type="number" id="bannerRotation" placeholder="Rotation (seconds)" value="5">
+                    <button onclick="testCreateBanner()">Create Banner</button>
+                    <div id="createBannerResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Tests -->
+        <div class="section">
+            <h2>🛍️ Product Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Get All Products</h3>
+                    <button onclick="testGetProducts()">Load Products</button>
+                    <div id="productsResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Product by ID</h3>
+                    <input type="number" id="productId" placeholder="Product ID" value="1">
+                    <button onclick="testGetProduct()">Get Product</button>
+                    <div id="productResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Create Product (Admin)</h3>
+                    <input type="text" id="prodName" placeholder="Product Name" value="Test Product">
+                    <input type="number" id="prodPrice" placeholder="Price" value="299">
+                    <input type="number" id="prodStock" placeholder="Stock" value="100">
+                    <button onclick="testCreateProduct()">Create Product</button>
+                    <div id="createProdResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Tests -->
+        <div class="section">
+            <h2>🛒 Cart Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Add to Cart</h3>
+                    <input type="number" id="cartProductId" placeholder="Product ID" value="1">
+                    <input type="number" id="cartQuantity" placeholder="Quantity" value="2">
+                    <button onclick="testAddToCart()">Add to Cart</button>
+                    <div id="addCartResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Cart</h3>
+                    <button onclick="testGetCart()">View Cart</button>
+                    <div id="cartResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Cart Count</h3>
+                    <button onclick="testGetCartCount()">Get Count</button>
+                    <div id="cartCountResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Clear Cart</h3>
+                    <button class="danger" onclick="testClearCart()">Clear Cart</button>
+                    <div id="clearCartResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coupon Tests -->
+        <div class="section">
+            <h2>🎟️ Coupon Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Create Coupon (Admin)</h3>
+                    <input type="text" id="couponCode" placeholder="Coupon Code" value="SAVE20">
+                    <select id="couponType">
+                        <option value="percentage">Percentage</option>
+                        <option value="fixed">Fixed Amount</option>
+                    </select>
+                    <input type="number" id="couponValue" placeholder="Value" value="20">
+                    <button onclick="testCreateCoupon()">Create Coupon</button>
+                    <div id="createCouponResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Validate Coupon</h3>
+                    <input type="text" id="validateCode" placeholder="Coupon Code" value="SAVE20">
+                    <button onclick="testValidateCoupon()">Validate</button>
+                    <div id="validateCouponResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get All Coupons (Admin)</h3>
+                    <button onclick="testGetCoupons()">Load Coupons</button>
+                    <div id="couponsResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Tests -->
+        <div class="section">
+            <h2>📦 Order Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Create Order (Checkout)</h3>
+                    <input type="text" id="orderAddress" placeholder="Shipping Address" value="123 Test St">
+                    <input type="text" id="orderPhone" placeholder="Phone" value="1234567890">
+                    <button onclick="testCheckout()">Place Order</button>
+                    <div id="checkoutResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get My Orders</h3>
+                    <button onclick="testGetOrders()">Load Orders</button>
+                    <div id="ordersResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Order by ID</h3>
+                    <input type="number" id="orderId" placeholder="Order ID" value="1">
+                    <button onclick="testGetOrder()">Get Order</button>
+                    <div id="orderResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Tests -->
+        <div class="section">
+            <h2>⭐ Review Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Add Review</h3>
+                    <input type="number" id="reviewProductId" placeholder="Product ID" value="1">
+                    <input type="number" id="reviewRating" placeholder="Rating (1-5)" value="5" min="1" max="5">
+                    <textarea id="reviewComment" placeholder="Review comment" rows="3">Great product!</textarea>
+                    <button onclick="testAddReview()">Submit Review</button>
+                    <div id="addReviewResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get Product Reviews</h3>
+                    <input type="number" id="reviewsProductId" placeholder="Product ID" value="1">
+                    <button onclick="testGetReviews()">Load Reviews</button>
+                    <div id="reviewsResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Tests -->
+        <div class="section">
+            <h2>👑 Admin Tests</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Get Dashboard Stats</h3>
+                    <button onclick="testAdminDashboard()">Load Dashboard</button>
+                    <div id="dashboardResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get All Users (Admin)</h3>
+                    <button onclick="testGetUsers()">Load Users</button>
+                    <div id="usersResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Get All Orders (Admin)</h3>
+                    <button onclick="testAdminOrders()">Load Orders</button>
+                    <div id="adminOrdersResult"></div>
+                </div>
+                <div class="test-item">
+                    <h3>Update Order Status</h3>
+                    <input type="number" id="statusOrderId" placeholder="Order ID" value="1">
+                    <select id="orderStatus">
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                    <button onclick="testUpdateOrderStatus()">Update Status</button>
+                    <div id="updateStatusResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        
+        function getToken() {
+            return localStorage.getItem('auth_token');
+        }
+        
+        function setToken(token) {
+            localStorage.setItem('auth_token', token);
+            updateAuthStatus();
+        }
+        
+        function clearToken() {
+            localStorage.removeItem('auth_token');
+            updateAuthStatus();
+        }
+        
+        async function updateAuthStatus() {
+            const token = getToken();
+            const statusDiv = document.getElementById('authStatus');
+            const statusText = document.getElementById('authStatusText');
+            const userInfo = document.getElementById('authUserInfo');
+            
+            if (token) {
+                try {
+                    const response = await fetch(`${API_BASE}/user`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        statusDiv.className = 'auth-status logged-in';
+                        statusText.textContent = 'Logged In';
+                        userInfo.textContent = `${data.data.name} (${data.data.role})`;
+                    } else {
+                        throw new Error('Invalid token');
+                    }
+                } catch (error) {
+                    statusDiv.className = 'auth-status logged-out';
+                    statusText.textContent = 'Logged Out';
+                    userInfo.textContent = '';
+                    clearToken();
+                }
+            } else {
+                statusDiv.className = 'auth-status logged-out';
+                statusText.textContent = 'Logged Out';
+                userInfo.textContent = '';
+            }
+        }
+        
+        function showResult(elementId, data, isError = false) {
+            const el = document.getElementById(elementId);
+            el.className = `result ${isError ? 'error' : 'success'}`;
+            el.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+        
+        // Auth Tests
+        async function testRegister() {
+            try {
+                const response = await fetch(`${API_BASE}/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('regName').value,
+                        email: document.getElementById('regEmail').value,
+                        password: document.getElementById('regPassword').value
+                    })
+                });
+                const data = await response.json();
+                if (response.ok && data.data.token) {
+                    setToken(data.data.token);
+                }
+                showResult('regResult', data, !response.ok);
+            } catch (error) {
+                showResult('regResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: document.getElementById('loginEmail').value,
+                        password: document.getElementById('loginPassword').value
+                    })
+                });
+                const data = await response.json();
+                if (response.ok && data.data.token) {
+                    setToken(data.data.token);
+                }
+                showResult('loginResult', data, !response.ok);
+            } catch (error) {
+                showResult('loginResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetUser() {
+            try {
+                const response = await fetch(`${API_BASE}/user`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('userResult', data, !response.ok);
+            } catch (error) {
+                showResult('userResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testLogout() {
+            try {
+                const response = await fetch(`${API_BASE}/logout`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                clearToken();
+                showResult('logoutResult', data, !response.ok);
+            } catch (error) {
+                showResult('logoutResult', { error: error.message }, true);
+            }
+        }
+        
+        // Banner Tests
+        async function testGetBanners() {
+            try {
+                const response = await fetch(`${API_BASE}/banners`);
+                const data = await response.json();
+                showResult('bannersResult', data, !response.ok);
+            } catch (error) {
+                showResult('bannersResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testCreateBanner() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/banners`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        title: document.getElementById('bannerTitle').value,
+                        image_url: document.getElementById('bannerImage').value,
+                        rotation_time: parseInt(document.getElementById('bannerRotation').value),
+                        is_active: true
+                    })
+                });
+                const data = await response.json();
+                showResult('createBannerResult', data, !response.ok);
+            } catch (error) {
+                showResult('createBannerResult', { error: error.message }, true);
+            }
+        }
+        
+        // Product Tests
+        async function testGetProducts() {
+            try {
+                const response = await fetch(`${API_BASE}/products`);
+                const data = await response.json();
+                showResult('productsResult', data, !response.ok);
+            } catch (error) {
+                showResult('productsResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetProduct() {
+            try {
+                const id = document.getElementById('productId').value;
+                const response = await fetch(`${API_BASE}/products/${id}`);
+                const data = await response.json();
+                showResult('productResult', data, !response.ok);
+            } catch (error) {
+                showResult('productResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testCreateProduct() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/products`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        name: document.getElementById('prodName').value,
+                        price: parseFloat(document.getElementById('prodPrice').value),
+                        stock_quantity: parseInt(document.getElementById('prodStock').value),
+                        description: 'Test product description'
+                    })
+                });
+                const data = await response.json();
+                showResult('createProdResult', data, !response.ok);
+            } catch (error) {
+                showResult('createProdResult', { error: error.message }, true);
+            }
+        }
+        
+        // Cart Tests
+        async function testAddToCart() {
+            try {
+                const response = await fetch(`${API_BASE}/cart/add`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        product_id: parseInt(document.getElementById('cartProductId').value),
+                        quantity: parseInt(document.getElementById('cartQuantity').value)
+                    })
+                });
+                const data = await response.json();
+                showResult('addCartResult', data, !response.ok);
+            } catch (error) {
+                showResult('addCartResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetCart() {
+            try {
+                const response = await fetch(`${API_BASE}/cart`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('cartResult', data, !response.ok);
+            } catch (error) {
+                showResult('cartResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetCartCount() {
+            try {
+                const response = await fetch(`${API_BASE}/cart/count`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('cartCountResult', data, !response.ok);
+            } catch (error) {
+                showResult('cartCountResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testClearCart() {
+            try {
+                const response = await fetch(`${API_BASE}/cart/clear`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('clearCartResult', data, !response.ok);
+            } catch (error) {
+                showResult('clearCartResult', { error: error.message }, true);
+            }
+        }
+        
+        // Coupon Tests
+        async function testCreateCoupon() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/coupons`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        code: document.getElementById('couponCode').value,
+                        type: document.getElementById('couponType').value,
+                        value: parseFloat(document.getElementById('couponValue').value),
+                        is_active: true
+                    })
+                });
+                const data = await response.json();
+                showResult('createCouponResult', data, !response.ok);
+            } catch (error) {
+                showResult('createCouponResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testValidateCoupon() {
+            try {
+                const response = await fetch(`${API_BASE}/coupons/validate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        code: document.getElementById('validateCode').value
+                    })
+                });
+                const data = await response.json();
+                showResult('validateCouponResult', data, !response.ok);
+            } catch (error) {
+                showResult('validateCouponResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetCoupons() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/coupons`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('couponsResult', data, !response.ok);
+            } catch (error) {
+                showResult('couponsResult', { error: error.message }, true);
+            }
+        }
+        
+        // Order Tests
+        async function testCheckout() {
+            try {
+                const response = await fetch(`${API_BASE}/checkout`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        shipping_address: document.getElementById('orderAddress').value,
+                        phone: document.getElementById('orderPhone').value
+                    })
+                });
+                const data = await response.json();
+                showResult('checkoutResult', data, !response.ok);
+            } catch (error) {
+                showResult('checkoutResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetOrders() {
+            try {
+                const response = await fetch(`${API_BASE}/orders`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('ordersResult', data, !response.ok);
+            } catch (error) {
+                showResult('ordersResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetOrder() {
+            try {
+                const id = document.getElementById('orderId').value;
+                const response = await fetch(`${API_BASE}/orders/${id}`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('orderResult', data, !response.ok);
+            } catch (error) {
+                showResult('orderResult', { error: error.message }, true);
+            }
+        }
+        
+        // Review Tests
+        async function testAddReview() {
+            try {
+                const response = await fetch(`${API_BASE}/reviews`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({
+                        product_id: parseInt(document.getElementById('reviewProductId').value),
+                        rating: parseInt(document.getElementById('reviewRating').value),
+                        comment: document.getElementById('reviewComment').value
+                    })
+                });
+                const data = await response.json();
+                showResult('addReviewResult', data, !response.ok);
+            } catch (error) {
+                showResult('addReviewResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetReviews() {
+            try {
+                const id = document.getElementById('reviewsProductId').value;
+                const response = await fetch(`${API_BASE}/products/${id}/reviews`);
+                const data = await response.json();
+                showResult('reviewsResult', data, !response.ok);
+            } catch (error) {
+                showResult('reviewsResult', { error: error.message }, true);
+            }
+        }
+        
+        // Admin Tests
+        async function testAdminDashboard() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/dashboard`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('dashboardResult', data, !response.ok);
+            } catch (error) {
+                showResult('dashboardResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testGetUsers() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/users`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('usersResult', data, !response.ok);
+            } catch (error) {
+                showResult('usersResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testAdminOrders() {
+            try {
+                const response = await fetch(`${API_BASE}/admin/orders`, {
+                    headers: { 'Authorization': `Bearer ${getToken()}` }
+                });
+                const data = await response.json();
+                showResult('adminOrdersResult', data, !response.ok);
+            } catch (error) {
+                showResult('adminOrdersResult', { error: error.message }, true);
+            }
+        }
+        
+        async function testUpdateOrderStatus() {
+            try {
+                const id = document.getElementById('statusOrderId').value;
+                const status = document.getElementById('orderStatus').value;
+                const response = await fetch(`${API_BASE}/admin/orders/${id}/status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getToken()}`
+                    },
+                    body: JSON.stringify({ status })
+                });
+                const data = await response.json();
+                showResult('updateStatusResult', data, !response.ok);
+            } catch (error) {
+                showResult('updateStatusResult', { error: error.message }, true);
+            }
+        }
+        
+        // Initialize
+        updateAuthStatus();
+    </script>
+</body>
+</html>

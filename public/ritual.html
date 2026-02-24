@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ritual — AUSHVERA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5EFE6;
+            color: #5E5E5E;
+            line-height: 1.8;
+            font-size: 17px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="400" height="400" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: #1C1C1C;
+            letter-spacing: 1px;
+        }
+
+        em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background: #0B1C2D;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 12rem;
+        }
+
+        .nav-left {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-right .nav-links {
+            gap: 60px;
+        }
+
+        .nav-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 60px;
+        }
+
+        .nav-links a {
+            color: #F5EFE6;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            font-weight: 400;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #C6A75E;
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #C6A75E;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #C6A75E;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            pointer-events: none;
+        }
+
+        .nav-center span {
+            font-weight: 300;
+            font-size: 1.6rem;
+        }
+
+        .cart-icon,
+        .nav-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: #F5EFE6;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .cart-icon:hover,
+        .nav-icon:hover {
+            color: #C6A75E;
+        }
+
+        .cart-icon svg,
+        .nav-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #C6A75E;
+            color: #0B1C2D;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 140px 40px 120px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 32px;
+            color: #1C1C1C;
+            margin-bottom: 40px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 17px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: #C6A45C;
+            margin: 0 auto;
+        }
+
+        /* Section Container */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: #C6A45C;
+            opacity: 0.4;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 32px;
+        }
+
+        .section-text p {
+            margin-bottom: 24px;
+        }
+
+        .section-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        /* Step Sections */
+        .step-section {
+            padding: 80px 0;
+        }
+
+        .step-section:first-of-type {
+            padding-top: 0;
+        }
+
+        .reverse {
+            direction: rtl;
+        }
+
+        .reverse > * {
+            direction: ltr;
+        }
+
+        /* When to Practice */
+        .practice-list {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .practice-list li {
+            padding: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .practice-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #C6A45C;
+            font-size: 20px;
+        }
+
+        .practice-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: #1C1C1C;
+            margin-top: 40px;
+        }
+
+        /* Final Section */
+        .final-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 40px;
+        }
+
+        .final-section h2 {
+            font-size: 40px;
+            margin-bottom: 32px;
+        }
+
+        .final-section p {
+            margin-bottom: 24px;
+        }
+
+        .final-divider {
+            width: 60px;
+            height: 1px;
+            background-color: #C6A45C;
+            margin: 40px auto 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 3rem 3rem;
+            background: linear-gradient(180deg, #0a1520 0%, #0B1C2D 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(198, 167, 94, 0.02) 2px, rgba(198, 167, 94, 0.02) 4px);
+            pointer-events: none;
+        }
+
+        .footer-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            width: 70px;
+            height: 70px;
+            filter: drop-shadow(0 4px 15px rgba(198, 167, 94, 0.3));
+        }
+
+        .footer-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #C6A75E;
+            font-style: italic;
+            margin: 1.5rem 0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-divider {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #C6A75E 50%, transparent 100%);
+            margin: 2rem auto;
+        }
+
+        .footer-columns {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #C6A75E;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .footer-column p {
+            color: rgba(245, 239, 230, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(245, 239, 230, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #C6A75E;
+            transition: width 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #C6A75E;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact li {
+            color: rgba(245, 239, 230, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .footer-contact li svg {
+            width: 16px;
+            height: 16px;
+            color: #C6A75E;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(198, 167, 94, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: #C6A75E;
+            background: rgba(198, 167, 94, 0.1);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            color: #C6A75E;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(198, 167, 94, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom p {
+            color: rgba(198, 167, 94, 0.6);
+            font-size: 0.85rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .nav-left,
+            .nav-right {
+                justify-self: center;
+            }
+
+            .nav-right {
+                flex-direction: column;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .reverse {
+                direction: ltr;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero .tagline {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 80px 24px;
+            }
+
+            .footer-columns {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="philosophy.html">PHILOSOPHY</a></li>
+                </ul>
+            </div>
+            <a class="nav-center" href="index.html">
+                <img src="assets/img/logo.png" alt="AUSHVERA Logo" class="nav-logo">
+                <span>AUSHVERA</span>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="product.html">PRODUCT</a></li>
+                    <li><a href="ritual.html" class="active">RITUAL</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <a href="chart.html" class="cart-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="profile.html" class="nav-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>THE RITUAL</h1>
+            <p class="tagline">Not a Routine. A Return.</p>
+            <p>In a world that moves quickly, ritual brings us back to stillness. The Aushvera ritual is not about complexity. It is about presence. A simple moment. Done consistently. Done consciously.</p>
+            <div class="divider"></div>
+        </section>
+
+        <section class="section">
+            <div class="two-column">
+                <div>
+                    <div class="section-number">1</div>
+                    <h2 class="section-title">Why Ritual Matters</h2>
+                    <div class="section-text">
+                        <p>Wellness is not built in dramatic shifts. It is shaped through daily discipline. A ritual transforms an action into intention. It creates pause in a busy day.</p>
+                        <p>It anchors the mind before the world begins — or after it settles. Aushvera is designed to become part of that rhythm.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=800&q=80" alt="Herbal tea on linen" class="section-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section step-section">
+            <div class="two-column">
+                <div>
+                    <div class="section-number">2</div>
+                    <h2 class="section-title">Step 1 — Prepare</h2>
+                    <div class="section-text">
+                        <p>Pour warm water or milk into a clean cup. Choose a quiet moment — morning clarity or evening stillness.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80" alt="Glass cup preparation" class="section-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section step-section">
+            <div class="two-column reverse">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?w=800&q=80" alt="Dropper bottle" class="section-image">
+                </div>
+                <div>
+                    <div class="section-number">3</div>
+                    <h2 class="section-title">Step 2 — Add</h2>
+                    <div class="section-text">
+                        <p>Add one measured dropper of Ashvattha™. Watch the infusion blend gently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section step-section">
+            <div class="two-column">
+                <div>
+                    <div class="section-number">4</div>
+                    <h2 class="section-title">Step 3 — Pause</h2>
+                    <div class="section-text">
+                        <p>Before sipping, take one slow breath. Allow the aroma and warmth to ground you.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=800&q=80" alt="Moment of pause" class="section-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section step-section">
+            <div class="two-column reverse">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&q=80" alt="Sipping tea" class="section-image">
+                </div>
+                <div>
+                    <div class="section-number">5</div>
+                    <h2 class="section-title">Step 4 — Sip</h2>
+                    <div class="section-text">
+                        <p>Drink slowly. No rush. No distraction. Let the moment belong to you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="two-column">
+                <div>
+                    <h2 class="section-title">When to Practice</h2>
+                    <ul class="practice-list">
+                        <li>Early morning before starting your day</li>
+                        <li>Evening wind down ritual</li>
+                        <li>Before meditation or journaling</li>
+                        <li>During moments that require clarity and calm</li>
+                    </ul>
+                    <p class="practice-quote">Consistency is more powerful than intensity.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Tea beside journal" class="section-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="final-section">
+            <h2>The Discipline of Daily Practice</h2>
+            <p>Ritual is not about perfection. It is about return. Each time you pause, prepare, and sip — you are choosing presence over pace.</p>
+            <p>This is not a trend. This is a practice. And practice, over time, becomes transformation.</p>
+            <div class="final-divider"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="AUSHVERA">
+            </div>
+            <p class="footer-tagline">Rooted in heritage. Refined for modern ritual.</p>
+            <div class="footer-divider"></div>
+        </div>
+
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>About Aushvera</h3>
+                <p>A premium Ayurvedic wellness brand honoring ancient botanical wisdom through refined, modern formulations. Each product embodies our commitment to purity, transparency, and timeless elegance.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="philosophy.html">Philosophy</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="ritual.html">Ritual</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Gurukul Rd, Gandhidham, India, 370201</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>aushveraglobalbiz1718@gmail.com</span>
+                    </li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/theaushvera?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aushvera-globalbiz-llp-322470380" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 AUSHVERA. All rights reserved. | <a href="#" style="color: #C6A75E; text-decoration: none;">Terms & Conditions</a></p>
+        </div>
+    </footer>
+</body>
+</html>

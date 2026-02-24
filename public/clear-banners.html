@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Banners</title>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <h1>Clear Banner Storage</h1>
+    <button onclick="clearBanners()">Clear Banners from localStorage</button>
+    <p id="result"></p>
+    
+    <script>
+        function clearBanners() {
+            localStorage.removeItem('banners');
+            localStorage.removeItem('bannerSettings');
+            document.getElementById('result').textContent = 'Banners cleared! You can now upload new banners.';
+        }
+    </script>
+</body>
+</html>

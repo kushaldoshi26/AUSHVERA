@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Auth State</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .info { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+        .clear-btn { background: #ff4444; color: white; padding: 10px 20px; border: none; cursor: pointer; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Auth State Debug</h1>
+    <div id="output"></div>
+    <button class="clear-btn" onclick="clearAll()">Clear All Storage</button>
+    <button class="clear-btn" onclick="location.reload()">Refresh</button>
+    
+    <script>
+        const output = document.getElementById('output');
+        
+        function showState() {
+            const auth_token = localStorage.getItem('auth_token');
+            const currentUser = localStorage.getItem('currentUser');
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            
+            output.innerHTML = `
+                <div class="info"><strong>auth_token:</strong> ${auth_token || 'NOT SET'}</div>
+                <div class="info"><strong>currentUser:</strong> ${currentUser || 'NOT SET'}</div>
+                <div class="info"><strong>token:</strong> ${token || 'NOT SET'}</div>
+                <div class="info"><strong>user:</strong> ${user || 'NOT SET'}</div>
+                <div class="info"><strong>All localStorage keys:</strong> ${Object.keys(localStorage).join(', ')}</div>
+            `;
+        }
+        
+        function clearAll() {
+            localStorage.clear();
+            alert('All storage cleared!');
+            location.reload();
+        }
+        
+        showState();
+    </script>
+</body>
+</html>

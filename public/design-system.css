@@ -1,0 +1,323 @@
+/* ═══════════════════════════════════════════════════════════
+   AUSHVERA DESIGN SYSTEM
+   Refined European Apothecary Aesthetic
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────── */
+/* TYPOGRAPHY IMPORTS */
+/* ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+/* ─────────────────────────────────────────────────────────── */
+/* COLOR PALETTE */
+/* ─────────────────────────────────────────────────────────── */
+:root {
+    /* Primary Colors */
+    --navy-deep: #0B1C2D;
+    --cream-muted: #F7F4EE;
+    --gold-metallic: #B8964C;
+    --gold-bright: #D4AF6A;
+    
+    /* Supporting Colors */
+    --charcoal-soft: #4A4A4A;
+    --gold-muted: #9B8456;
+    --navy-light: #1A2F42;
+    
+    /* Opacity Variants */
+    --gold-10: rgba(184, 150, 76, 0.1);
+    --gold-20: rgba(184, 150, 76, 0.2);
+    --gold-30: rgba(184, 150, 76, 0.3);
+    
+    /* Spacing Scale */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 80px;
+    --space-3xl: 120px;
+    
+    /* Typography Scale */
+    --font-serif: 'Cinzel', 'Playfair Display', 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', 'Lato', -apple-system, sans-serif;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* TYPOGRAPHY HIERARCHY */
+/* ─────────────────────────────────────────────────────────── */
+
+/* H1 - Primary Headings */
+h1, .h1 {
+    font-family: var(--font-serif);
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    color: var(--navy-deep);
+    margin-bottom: var(--space-lg);
+}
+
+h1.uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* H2 - Section Headings */
+h2, .h2 {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: var(--navy-deep);
+    margin-bottom: var(--space-md);
+}
+
+/* H3 - Subheadings */
+h3, .h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: var(--gold-metallic);
+    margin-bottom: var(--space-sm);
+}
+
+/* H4 - Small Headings */
+h4, .h4 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    color: var(--gold-muted);
+    margin-bottom: var(--space-sm);
+}
+
+/* Body Text */
+p, .body-text {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--charcoal-soft);
+    margin-bottom: var(--space-md);
+}
+
+.body-large {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.body-small {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Taglines & Descriptions */
+.tagline {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--gold-metallic);
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* FORM ELEMENTS */
+/* ─────────────────────────────────────────────────────────── */
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 14px 20px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--navy-deep);
+    background: transparent;
+    border: 1px solid var(--gold-metallic);
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--gold-muted);
+    opacity: 0.6;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 3px var(--gold-10);
+    background: var(--cream-muted);
+}
+
+/* Textarea Specific */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* BUTTONS */
+/* ─────────────────────────────────────────────────────────── */
+
+/* Primary Button */
+.btn-primary {
+    display: inline-block;
+    padding: 16px 40px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy-deep);
+    background: linear-gradient(135deg, var(--gold-metallic), var(--gold-bright));
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(184, 150, 76, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 150, 76, 0.35);
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-metallic));
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    display: inline-block;
+    padding: 16px 40px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-metallic);
+    background: transparent;
+    border: 1px solid var(--gold-metallic);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    color: var(--navy-deep);
+    background: var(--gold-metallic);
+    transform: translateY(-2px);
+}
+
+/* Text Link Button */
+.btn-link {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--gold-metallic);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--gold-bright);
+    border-bottom-color: var(--gold-bright);
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* LAYOUT & SPACING */
+/* ─────────────────────────────────────────────────────────── */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-2xl);
+}
+
+.section {
+    padding: var(--space-3xl) 0;
+}
+
+.section-sm {
+    padding: var(--space-2xl) 0;
+}
+
+/* Dividers */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-metallic), transparent);
+    margin: var(--space-xl) 0;
+}
+
+.divider-solid {
+    height: 1px;
+    background: var(--gold-20);
+    margin: var(--space-xl) 0;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* ANIMATIONS & TRANSITIONS */
+/* ─────────────────────────────────────────────────────────── */
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.smooth-transition {
+    transition: all 0.4s ease;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* UTILITY CLASSES */
+/* ─────────────────────────────────────────────────────────── */
+
+.text-navy { color: var(--navy-deep); }
+.text-gold { color: var(--gold-metallic); }
+.text-cream { color: var(--cream-muted); }
+.text-charcoal { color: var(--charcoal-soft); }
+
+.bg-navy { background-color: var(--navy-deep); }
+.bg-cream { background-color: var(--cream-muted); }
+.bg-gold { background-color: var(--gold-metallic); }
+
+.text-center { text-align: center; }
+.text-uppercase { text-transform: uppercase; }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }

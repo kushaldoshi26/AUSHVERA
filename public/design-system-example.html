@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSHVERA Design System</title>
+    <link rel="stylesheet" href="design-system.css">
+    <link rel="stylesheet" href="nav.css">
+    <style>
+        body {
+            background: var(--cream-muted);
+        }
+        .showcase-section {
+            background: white;
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-xl);
+            border: 1px solid var(--gold-20);
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin: var(--space-sm);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .color-label {
+            display: block;
+            margin-top: var(--space-xs);
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-left">
+                <li><a href="#">COLLECTIONS</a></li>
+                <li><a href="#">PHILOSOPHY</a></li>
+                <li><a href="#">INGREDIENTS</a></li>
+            </ul>
+            
+            <div class="nav-logo">AUSHVERA</div>
+            
+            <ul class="nav-right">
+                <li><a href="#">JOURNAL</a></li>
+                <li><a href="#">ACCOUNT</a></li>
+                <li><a href="#" class="icon-link">🛒</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Typography Section -->
+        <section class="section">
+            <div class="showcase-section fade-in">
+                <h1 class="uppercase">Typography Hierarchy</h1>
+                <div class="divider"></div>
+                
+                <h1>H1 - Primary Heading</h1>
+                <p class="body-text">Elegant serif typography for main titles. 60px, medium weight, refined spacing.</p>
+                
+                <h2>H2 - Section Heading</h2>
+                <p class="body-text">Secondary headings for content sections. 40px, lighter weight, classical presence.</p>
+                
+                <h3>H3 - Subheading with Italic Elegance</h3>
+                <p class="body-text">Italic serif in metallic gold for taglines and emphasis. 22px, refined tone.</p>
+                
+                <h4>H4 - Small Heading</h4>
+                <p class="body-text">Smaller headings for product descriptions. 18px, muted gold color.</p>
+                
+                <p class="body-large">Body Large - Editorial content with generous line height for comfortable reading. 18px, light weight, calm tone.</p>
+                
+                <p class="body-text">Body Text - Standard paragraph text with refined sans-serif. 16px, 300 weight, 1.7 line height. Perfect for product descriptions and informational content.</p>
+                
+                <p class="body-small">Body Small - Smaller text for captions and secondary information. 14px, maintains elegant readability.</p>
+                
+                <p class="tagline">Tagline - Italic serif for elegant emphasis and brand messaging</p>
+            </div>
+        </section>
+
+        <!-- Color Palette Section -->
+        <section class="section-sm">
+            <div class="showcase-section fade-in">
+                <h2>Color Palette</h2>
+                <div class="divider-solid"></div>
+                
+                <div style="text-align: center;">
+                    <div style="display: inline-block;">
+                        <div class="color-swatch bg-navy"></div>
+                        <span class="color-label text-charcoal">Deep Navy<br>#0B1C2D</span>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="color-swatch bg-cream"></div>
+                        <span class="color-label text-charcoal">Muted Cream<br>#F7F4EE</span>
+                    </div>
+                    <div style="display: inline-block;">
+                        <div class="color-swatch bg-gold"></div>
+                        <span class="color-label text-charcoal">Metallic Gold<br>#B8964C</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Elements Section -->
+        <section class="section-sm">
+            <div class="showcase-section fade-in">
+                <h2>Form Elements</h2>
+                <div class="divider-solid"></div>
+                
+                <form style="max-width: 600px;">
+                    <div class="mb-lg">
+                        <label class="body-small text-charcoal mb-sm" style="display: block;">Full Name</label>
+                        <input type="text" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="mb-lg">
+                        <label class="body-small text-charcoal mb-sm" style="display: block;">Email Address</label>
+                        <input type="email" placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="mb-lg">
+                        <label class="body-small text-charcoal mb-sm" style="display: block;">Message</label>
+                        <textarea placeholder="Share your thoughts..."></textarea>
+                    </div>
+                </form>
+                
+                <p class="body-small text-gold">Thin gold borders with subtle focus animations. No harsh corners or neon effects.</p>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="section-sm">
+            <div class="showcase-section fade-in">
+                <h2>Button System</h2>
+                <div class="divider-solid"></div>
+                
+                <div class="mb-xl">
+                    <button class="btn-primary">Primary Button</button>
+                    <p class="body-small text-charcoal mt-sm">Metallic gold gradient with subtle lift on hover</p>
+                </div>
+                
+                <div class="mb-xl">
+                    <button class="btn-secondary">Secondary Button</button>
+                    <p class="body-small text-charcoal mt-sm">Outlined style with elegant fill transition</p>
+                </div>
+                
+                <div class="mb-xl">
+                    <a href="#" class="btn-link">Text Link Button →</a>
+                    <p class="body-small text-charcoal mt-sm">Minimal link with underline animation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing System Section -->
+        <section class="section-sm">
+            <div class="showcase-section fade-in">
+                <h2>Spacing System</h2>
+                <div class="divider-solid"></div>
+                
+                <div class="body-text">
+                    <p><strong>Luxury spacing rhythm:</strong></p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li class="mb-sm">• XS: 8px - Tight spacing</li>
+                        <li class="mb-sm">• SM: 16px - Small gaps</li>
+                        <li class="mb-sm">• MD: 24px - Standard spacing</li>
+                        <li class="mb-sm">• LG: 32px - Generous spacing</li>
+                        <li class="mb-sm">• XL: 48px - Large sections</li>
+                        <li class="mb-sm">• 2XL: 80px - Section padding</li>
+                        <li class="mb-sm">• 3XL: 120px - Major sections</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- UX Principles Section -->
+        <section class="section-sm">
+            <div class="showcase-section fade-in">
+                <h2>UX Principles</h2>
+                <div class="divider-solid"></div>
+                
+                <div class="body-text">
+                    <h4>Calm Interaction Speed</h4>
+                    <p>Smooth transitions (0.3–0.5s ease) with no sudden animations</p>
+                    
+                    <h4>Elegant Fade Effects</h4>
+                    <p>Subtle entrance animations that respect user attention</p>
+                    
+                    <h4>Premium Restraint</h4>
+                    <p>Minimal motion, generous white space, refined interactions</p>
+                    
+                    <h4>Heritage-Inspired Tone</h4>
+                    <p>Classical European apothecary aesthetic throughout</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

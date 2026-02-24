@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Lato', -apple-system, sans-serif;
+    font-weight: 300;
+    background: #0B1C2D;
+    color: #4A4A4A;
+}
+
+.navbar {
+    background: #0B1C2D;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(184, 150, 76, 0.2);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    position: relative;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    flex: 1;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-left a,
+.nav-right a {
+    color: #F7F4EE;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    color: #B8964C;
+    transform: translateY(-1px);
+}
+
+.nav-left a::after,
+.nav-right a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #B8964C, #D4AF6A);
+    transition: width 0.4s ease;
+}
+
+.nav-left a:hover::after,
+.nav-right a:hover::after {
+    width: 100%;
+}
+
+.nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #F7F4EE;
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    transition: color 0.4s ease;
+}
+
+.nav-logo:hover {
+    color: #B8964C;
+}
+
+.icon-link {
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.icon-link:hover {
+    transform: scale(1.1);
+    color: #B8964C;
+}
+
+@media (max-width: 1200px) {
+    .nav-container {
+        padding: 0 40px;
+    }
+    
+    .nav-left,
+    .nav-right {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 968px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .nav-left,
+    .nav-right {
+        gap: 20px;
+    }
+    
+    .nav-left a,
+    .nav-right a {
+        font-size: 10px;
+    }
+    
+    .nav-logo {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 15px;
+        justify-content: center;
+    }
+    
+    .nav-left,
+    .nav-right {
+        display: none;
+    }
+    
+    .nav-logo {
+        position: static;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: 14px;
+        gap: 8px;
+    }
+}
