@@ -82,23 +82,24 @@ class CartController extends Controller
                 ], 404);
             }
 
-            // Check stock availability
-            if ($product->stock <= 0) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Product out of stock',
-                    'available_stock' => 0
-                ], 422);
-            }
+            // Only check stock if the product tracks inventory
+            if ($product->track_inventory) {
+                if ($product->stock <= 0) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Product out of stock',
+                        'available_stock' => 0
+                    ], 422);
+                }
 
-            // Validate requested quantity against available stock
-            if ($validated['quantity'] > $product->stock) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Requested quantity exceeds available stock',
-                    'available_stock' => $product->stock,
-                    'requested_quantity' => $validated['quantity']
-                ], 422);
+                if ($validated['quantity'] > $product->stock) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Requested quantity exceeds available stock',
+                        'available_stock' => $product->stock,
+                        'requested_quantity' => $validated['quantity']
+                    ], 422);
+                }
             }
 
             $user = $request->user();
@@ -109,9 +110,9 @@ class CartController extends Controller
 
             if ($existingItem) {
                 $newQuantity = $existingItem->quantity + $validated['quantity'];
-                
-                // Validate total quantity doesn't exceed stock
-                if ($newQuantity > $product->stock) {
+
+                // Validate total quantity doesn't exceed stock (only if tracking)
+                if ($product->track_inventory && $newQuantity > $product->stock) {
                     return response()->json([
                         'success' => false,
                         'message' => 'Total quantity exceeds available stock',
@@ -166,7 +167,7 @@ class CartController extends Controller
     }
 
     /**
-     * Update cart item quantity with stock validation
+     * Update cart item quantity with stock validation and ownership check
      */
     public function updateItem(Request $request, $itemId)
     {
@@ -175,7 +176,11 @@ class CartController extends Controller
                 'quantity' => 'required|integer|min:1'
             ]);
 
-            $cartItem = CartItem::find($itemId);
+            $user = $request->user();
+            $cart = $user->cart;
+
+            // Verify the cart item belongs to the authenticated user's cart
+            $cartItem = $cart->items()->find($itemId);
 
             if (!$cartItem) {
                 return response()->json([
@@ -186,24 +191,25 @@ class CartController extends Controller
 
             $product = $cartItem->product;
 
-            // Check stock availability
-            if ($product->stock <= 0) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Product out of stock',
-                    'available_stock' => 0
-                ], 422);
-            }
+            // Only check stock if the product tracks inventory
+            if ($product->track_inventory) {
+                if ($product->stock <= 0) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Product out of stock',
+                        'available_stock' => 0
+                    ], 422);
+                }
 
-            // Validate new quantity against available stock
-            if ($validated['quantity'] > $product->stock) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Requested quantity exceeds available stock',
-                    'available_stock' => $product->stock,
-                    'requested_quantity' => $validated['quantity'],
-                    'current_quantity' => $cartItem->quantity
-                ], 422);
+                if ($validated['quantity'] > $product->stock) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Requested quantity exceeds available stock',
+                        'available_stock' => $product->stock,
+                        'requested_quantity' => $validated['quantity'],
+                        'current_quantity' => $cartItem->quantity
+                    ], 422);
+                }
             }
 
             $cartItem->update(['quantity' => $validated['quantity']]);
@@ -241,12 +247,16 @@ class CartController extends Controller
     }
 
     /**
-     * Remove item from cart
+     * Remove item from cart with ownership check
      */
     public function removeItem(Request $request, $itemId)
     {
         try {
-            $cartItem = CartItem::find($itemId);
+            $user = $request->user();
+            $cart = $user->cart;
+
+            // Verify the cart item belongs to the authenticated user's cart
+            $cartItem = $cart->items()->find($itemId);
 
             if (!$cartItem) {
                 return response()->json([

@@ -26,7 +26,7 @@ class PaymentController extends Controller
             $signature = $validated['razorpay_signature'];
 
             // Generate signature for verification
-            $secret = env('RAZORPAY_SECRET');
+            $secret = config('services.razorpay.secret');
             $generatedSignature = hash_hmac('sha256', $orderId . '|' . $paymentId, $secret);
 
             // Verify signature
@@ -96,7 +96,7 @@ class PaymentController extends Controller
     public function webhook(Request $request)
     {
         try {
-            $webhookSecret = env('RAZORPAY_WEBHOOK_SECRET');
+            $webhookSecret = config('services.razorpay.webhook_secret');
             $webhookSignature = $request->header('X-Razorpay-Signature');
             $webhookBody = $request->getContent();
 

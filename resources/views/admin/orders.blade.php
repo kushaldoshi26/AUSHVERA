@@ -105,7 +105,7 @@ async function viewOrder(id) {
     try {
         currentOrderId = id;
         const token = api.getToken();
-        const response = await fetch(`{{ url("/api/orders") }}/${id}`, {
+        const response = await fetch(`{{ url("/api/admin/orders") }}/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();

@@ -298,7 +298,8 @@ class OrderController extends Controller
     {
         try {
             $validated = $request->validate([
-                'status' => 'required|in:pending,processing,shipped,delivered,cancelled'
+                'status' => 'required|in:pending,processing,shipped,delivered,cancelled',
+                'payment_status' => 'sometimes|in:pending,paid,failed,refunded',
             ]);
 
             $order = Order::find($orderId);
@@ -310,7 +311,11 @@ class OrderController extends Controller
                 ], 404);
             }
 
-            $order->update(['status' => $validated['status']]);
+            $updateData = ['status' => $validated['status']];
+            if (isset($validated['payment_status'])) {
+                $updateData['payment_status'] = $validated['payment_status'];
+            }
+            $order->update($updateData);
 
             return response()->json([
                 'success' => true,

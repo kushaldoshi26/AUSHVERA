@@ -15,7 +15,6 @@ Route::get('/product', [WebController::class, 'product'])->name('product');
 Route::get('/products', [WebController::class, 'products'])->name('products');
 
 // Cart & Profile
-Route::get('/chart', [WebController::class, 'cart'])->name('chart');
 Route::get('/cart', [WebController::class, 'cart'])->name('cart');
 Route::get('/profile', [WebController::class, 'profile'])->name('profile');
 Route::get('/orders', [WebController::class, 'orders'])->name('orders');

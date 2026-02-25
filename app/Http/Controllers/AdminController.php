@@ -63,8 +63,27 @@ class AdminController extends Controller
     public function updateUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+
+        $validated = $request->validate([
+            'name'     => 'sometimes|string|max:255',
+            'email'    => 'sometimes|email|unique:users,email,' . $id,
+            'phone'    => 'nullable|string|max:20',
+            'city'     => 'nullable|string|max:100',
+            'state'    => 'nullable|string|max:100',
+            'pincode'  => 'nullable|string|max:10',
+            'address'  => 'nullable|string',
+            'is_active' => 'sometimes|boolean',
+        ]);
+
+        $user->update($validated);
         return response()->json(['message' => 'User updated successfully', 'user' => $user]);
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json(['message' => 'User deleted successfully']);
     }
 
     public function reviews()
@@ -140,6 +159,44 @@ class AdminController extends Controller
                 'per_page' => $orders->perPage(),
                 'current_page' => $orders->currentPage(),
                 'last_page' => $orders->lastPage(),
+            ]
+        ], 200);
+    }
+
+    public function showOrder($id)
+    {
+        $order = \App\Models\Order::with(['user', 'items.product'])->find($id);
+
+        if (!$order) {
+            return response()->json(['success' => false, 'message' => 'Order not found'], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'id'             => $order->id,
+                'total_amount'   => $order->total_amount,
+                'status'         => $order->status,
+                'payment_status' => $order->payment_status ?? 'pending',
+                'payment_method' => $order->payment_method,
+                'transaction_id' => $order->transaction_id,
+                'user'           => $order->user ? [
+                    'id'    => $order->user->id,
+                    'name'  => $order->user->name,
+                    'email' => $order->user->email,
+                    'phone' => $order->user->phone,
+                ] : null,
+                'items'          => $order->items->map(function ($item) {
+                    return [
+                        'id'         => $item->id,
+                        'product_id' => $item->product_id,
+                        'product'    => $item->product ? ['id' => $item->product->id, 'name' => $item->product->name] : null,
+                        'quantity'   => $item->quantity,
+                        'price'      => $item->price,
+                    ];
+                }),
+                'created_at' => $order->created_at,
+                'updated_at' => $order->updated_at,
             ]
         ], 200);
     }

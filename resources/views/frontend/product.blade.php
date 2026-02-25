@@ -332,7 +332,7 @@
             localStorage.setItem('cartCount', cartCount);
             updateCartDisplay();
             
-            window.location.href = '{{ url('chart') }}';
+            window.location.href = '{{ url('cart') }}';
         }
 
         function addToCart() {
@@ -377,7 +377,7 @@
         }
 
         function checkout() {
-            window.location.href = '{{ url('chart') }}';
+            window.location.href = '{{ url('cart') }}';
         }
 
         window.onclick = function(event) {

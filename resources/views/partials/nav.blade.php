@@ -13,7 +13,7 @@
         </a>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="{{ route('product') }}" class="{{ request()->routeIs('product') ? 'active' : '' }}">PRODUCT</a></li>
+                <li><a href="{{ route('products') }}" class="{{ request()->routeIs('products') ? 'active' : '' }}">PRODUCT</a></li>
                 <li><a href="{{ route('ritual') }}" class="{{ request()->routeIs('ritual') ? 'active' : '' }}">RITUAL</a></li>
                 <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">CONTACT</a></li>
             </ul>

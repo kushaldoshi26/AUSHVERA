@@ -9,13 +9,17 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->role !== 'admin') {
+        $user = auth()->user();
+
+        if (!$user || $user->role !== 'admin') {
             return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
         }
-        
-        // Allow super_admin to access all routes
-        // Other admin roles are also allowed but with potential restrictions in controllers
-        
+
+        // Block deactivated admin accounts
+        if ($user->is_active === false) {
+            return response()->json(['success' => false, 'message' => 'Your admin account has been deactivated. Contact the super admin.'], 403);
+        }
+
         return $next($request);
     }
 }

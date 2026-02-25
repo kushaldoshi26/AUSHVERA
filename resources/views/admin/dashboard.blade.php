@@ -75,7 +75,7 @@ async function loadDashboard() {
         document.getElementById('totalOrders').textContent = orders.data?.length || 0;
         document.getElementById('totalUsers').textContent = users.data?.length || 0;
         
-        const revenue = orders.data?.reduce((sum, order) => sum + parseFloat(order.total || 0), 0) || 0;
+        const revenue = orders.data?.reduce((sum, order) => sum + parseFloat(order.total_amount || 0), 0) || 0;
         document.getElementById('totalRevenue').textContent = `₹${revenue.toFixed(2)}`;
         
         const tbody = document.getElementById('recentOrders');
@@ -84,7 +84,7 @@ async function loadDashboard() {
                 <tr>
                     <td>#${o.id}</td>
                     <td>${o.user?.name || 'N/A'}</td>
-                    <td>₹${o.total}</td>
+                    <td>₹${o.total_amount}</td>
                     <td><span class="badge badge-${o.status}">${o.status}</span></td>
                     <td>${new Date(o.created_at).toLocaleDateString()}</td>
                 </tr>
